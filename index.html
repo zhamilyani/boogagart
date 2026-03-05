@@ -772,6 +772,268 @@
 
     .wa-float:hover .wa-float-tooltip { opacity: 1; }
 
+    /* === BRIEF / LET'S TALK === */
+    .brief { background: var(--white); }
+
+    .brief-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .brief-left h2 {
+      font-family: 'Comfortaa', cursive;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .brief-left h2 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .brief-left > p {
+      color: #666;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .brief-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .brief-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brief-contact-item .bci-icon {
+      width: 46px; height: 46px;
+      border-radius: 14px;
+      background: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .brief-contact-item strong { display: block; font-size: 0.85rem; }
+    .brief-contact-item span { font-size: 0.85rem; color: #888; }
+    .brief-contact-item a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+
+    .brief-card {
+      background: var(--light);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brief-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gradient);
+    }
+
+    .brief-progress {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .brief-progress-dot {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background: #ddd;
+      transition: background 0.4s;
+    }
+
+    .brief-progress-dot.active { background: var(--primary); }
+    .brief-progress-dot.done { background: var(--secondary); }
+
+    .brief-step {
+      display: none;
+      animation: briefFadeIn 0.4s ease;
+    }
+
+    .brief-step.active { display: block; }
+
+    @keyframes briefFadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .brief-step-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .brief-step h3 {
+      font-family: 'Comfortaa', cursive;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .brief-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    .brief-option {
+      padding: 1rem 1.2rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: var(--white);
+      user-select: none;
+    }
+
+    .brief-option:hover { border-color: var(--primary); background: #fff5f5; }
+
+    .brief-option.selected {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: var(--white);
+      transform: scale(1.02);
+    }
+
+    .brief-option .bo-emoji { display: block; font-size: 1.6rem; margin-bottom: 0.3rem; }
+
+    .brief-input-wrap { margin-bottom: 0; }
+
+    .brief-input-wrap input,
+    .brief-input-wrap textarea {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      outline: none;
+      background: var(--white);
+      transition: border-color 0.3s;
+    }
+
+    .brief-input-wrap input:focus,
+    .brief-input-wrap textarea:focus { border-color: var(--primary); }
+
+    .brief-input-wrap textarea { resize: vertical; min-height: 80px; }
+
+    .brief-input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .brief-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .brief-btn-back {
+      background: none;
+      border: none;
+      color: #999;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0.5rem 0;
+      transition: color 0.3s;
+    }
+
+    .brief-btn-back:hover { color: var(--dark); }
+    .brief-btn-back.hidden { visibility: hidden; }
+
+    .brief-btn-next {
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      border: none;
+      background: var(--primary);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 5px 20px rgba(255,107,107,0.3);
+    }
+
+    .brief-btn-next:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .brief-btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    .brief-btn-next.finish {
+      background: #25D366;
+      box-shadow: 0 5px 20px rgba(37,211,102,0.3);
+    }
+
+    .brief-btn-next.finish:hover { background: #1fb855; }
+
+    .brief-done {
+      display: none;
+      text-align: center;
+      padding: 2rem 0;
+      animation: briefFadeIn 0.5s ease;
+    }
+
+    .brief-done.active { display: block; }
+
+    .brief-done-icon { font-size: 4rem; margin-bottom: 1rem; }
+
+    .brief-done h3 {
+      font-family: 'Comfortaa', cursive;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+
+    .brief-done p { color: #666; line-height: 1.6; }
+
+    .brief-summary {
+      margin-top: 1.5rem;
+      text-align: left;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+    }
+
+    .brief-summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .brief-summary-row:last-child { border: none; }
+    .brief-summary-row .label { color: #999; }
+    .brief-summary-row .value { font-weight: 600; }
+
     /* === MOBILE === */
     @media (max-width: 768px) {
       nav { display: none; }
@@ -788,7 +1050,8 @@
       .burger { display: flex; }
 
       .about-grid,
-      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-grid,
+      .brief-layout { grid-template-columns: 1fr; gap: 2rem; }
 
       .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
 
@@ -802,7 +1065,9 @@
       .gallery-grid { grid-template-columns: 1fr 1fr; }
       .gallery-item:nth-child(1) { grid-row: span 1; }
 
-      .form-row { grid-template-columns: 1fr; }
+      .form-row,
+      .brief-options,
+      .brief-input-row { grid-template-columns: 1fr; }
 
       .review-card { min-width: 280px; }
     }
@@ -1120,81 +1385,123 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="contact-section" id="contact">
+  <!-- BRIEF / LET'S TALK -->
+  <section class="brief" id="contact">
     <div class="container">
-      <div class="section-title">
-        <h2>Свяжитесь с нами</h2>
-        <p>Расскажите о вашем празднике — мы ответим в течение часа!</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info reveal-left">
-          <h3>Контакты</h3>
-          <div class="contact-item">
-            <div class="contact-item-icon">&#128205;</div>
-            <div class="contact-item-text">
-              <strong>Адрес</strong>
-              <span>Алматы, Казахстан</span>
+      <div class="brief-layout">
+        <div class="brief-left reveal-left">
+          <h2>Let's <span>talk</span></h2>
+          <p>Ответьте на 5 быстрых вопросов — и мы подготовим для вас предложение. Это займёт меньше минуты!</p>
+          <div class="brief-contacts">
+            <div class="brief-contact-item">
+              <div class="bci-icon">&#128205;</div>
+              <div><strong>Алматы, Казахстан</strong><span>Выезжаем по всему городу</span></div>
             </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">&#128172;</div>
-            <div class="contact-item-text">
-              <strong>WhatsApp</strong>
-              <span>Номер скоро будет добавлен</span>
+            <div class="brief-contact-item">
+              <div class="bci-icon">&#128172;</div>
+              <div><strong>WhatsApp</strong><span>Номер скоро</span></div>
             </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">&#128247;</div>
-            <div class="contact-item-text">
-              <strong>Instagram</strong>
-              <a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener">@boogagart</a>
+            <div class="brief-contact-item">
+              <div class="bci-icon">&#128247;</div>
+              <div><strong>Instagram</strong><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener">@boogagart</a></div>
             </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">&#128336;</div>
-            <div class="contact-item-text">
-              <strong>Время работы</strong>
-              <span>Ежедневно, 9:00 — 21:00</span>
+            <div class="brief-contact-item">
+              <div class="bci-icon">&#128336;</div>
+              <div><strong>Ежедневно</strong><span>9:00 — 21:00</span></div>
             </div>
           </div>
         </div>
-        <div class="contact-form-wrap reveal-right">
-          <h3>Быстрая заявка</h3>
-          <form id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Ваше имя</label>
-                <input type="text" id="name" placeholder="Как вас зовут?" required>
+
+        <div class="brief-card reveal-right" id="briefCard">
+          <div class="brief-progress" id="briefProgress">
+            <div class="brief-progress-dot active"></div>
+            <div class="brief-progress-dot"></div>
+            <div class="brief-progress-dot"></div>
+            <div class="brief-progress-dot"></div>
+            <div class="brief-progress-dot"></div>
+          </div>
+
+          <!-- Step 1: Event type -->
+          <div class="brief-step active" data-step="1">
+            <div class="brief-step-label">&#x2460; Шаг 1 из 5</div>
+            <h3>Какой праздник планируете?</h3>
+            <div class="brief-options" data-name="eventType">
+              <div class="brief-option" data-value="birthday"><span class="bo-emoji">&#127874;</span>День рождения</div>
+              <div class="brief-option" data-value="kids"><span class="bo-emoji">&#127917;</span>Детский праздник</div>
+              <div class="brief-option" data-value="newyear"><span class="bo-emoji">&#127876;</span>Новый год</div>
+              <div class="brief-option" data-value="corporate"><span class="bo-emoji">&#127878;</span>Корпоратив</div>
+              <div class="brief-option" data-value="wedding"><span class="bo-emoji">&#128141;</span>Свадьба</div>
+              <div class="brief-option" data-value="other"><span class="bo-emoji">&#9889;</span>Другое</div>
+            </div>
+          </div>
+
+          <!-- Step 2: Guest count -->
+          <div class="brief-step" data-step="2">
+            <div class="brief-step-label">&#x2461; Шаг 2 из 5</div>
+            <h3>Сколько гостей ожидается?</h3>
+            <div class="brief-options" data-name="guests">
+              <div class="brief-option" data-value="5-10"><span class="bo-emoji">&#128101;</span>5 — 10</div>
+              <div class="brief-option" data-value="10-25"><span class="bo-emoji">&#128101;</span>10 — 25</div>
+              <div class="brief-option" data-value="25-50"><span class="bo-emoji">&#128101;</span>25 — 50</div>
+              <div class="brief-option" data-value="50+"><span class="bo-emoji">&#127881;</span>50+</div>
+            </div>
+          </div>
+
+          <!-- Step 3: Budget -->
+          <div class="brief-step" data-step="3">
+            <div class="brief-step-label">&#x2462; Шаг 3 из 5</div>
+            <h3>Примерный бюджет?</h3>
+            <div class="brief-options" data-name="budget">
+              <div class="brief-option" data-value="до 100К"><span class="bo-emoji">&#128176;</span>до 100 000 &#8376;</div>
+              <div class="brief-option" data-value="100-300К"><span class="bo-emoji">&#128176;</span>100 — 300 тыс &#8376;</div>
+              <div class="brief-option" data-value="300-500К"><span class="bo-emoji">&#128176;</span>300 — 500 тыс &#8376;</div>
+              <div class="brief-option" data-value="обсудим"><span class="bo-emoji">&#128172;</span>Обсудим</div>
+            </div>
+          </div>
+
+          <!-- Step 4: Date -->
+          <div class="brief-step" data-step="4">
+            <div class="brief-step-label">&#x2463; Шаг 4 из 5</div>
+            <h3>Когда планируете мероприятие?</h3>
+            <div class="brief-input-wrap">
+              <input type="date" id="briefDate" data-name="date" min="">
+            </div>
+            <div style="margin-top:0.8rem">
+              <div class="brief-options" data-name="dateAlt" style="grid-template-columns: 1fr 1fr">
+                <div class="brief-option" data-value="ближайший месяц">Ближайший месяц</div>
+                <div class="brief-option" data-value="пока не знаю">Пока не знаю</div>
               </div>
-              <div class="form-group">
-                <label for="phone">Телефон</label>
-                <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+            </div>
+          </div>
+
+          <!-- Step 5: Contact info -->
+          <div class="brief-step" data-step="5">
+            <div class="brief-step-label">&#x2464; Шаг 5 из 5</div>
+            <h3>Как с вами связаться?</h3>
+            <div class="brief-input-row">
+              <div class="brief-input-wrap">
+                <input type="text" id="briefName" placeholder="Ваше имя" data-name="name" required>
+              </div>
+              <div class="brief-input-wrap">
+                <input type="tel" id="briefPhone" placeholder="+7 (___) ___-__-__" data-name="phone" required>
               </div>
             </div>
-            <div class="form-group">
-              <label for="eventType">Тип мероприятия</label>
-              <select id="eventType">
-                <option value="">Выберите тип...</option>
-                <option value="birthday">День рождения</option>
-                <option value="kids">Детский праздник</option>
-                <option value="newyear">Дед Мороз и Снегурочка</option>
-                <option value="corporate">Корпоратив</option>
-                <option value="show">Шоу-программа</option>
-                <option value="decor">Оформление</option>
-                <option value="other">Другое</option>
-              </select>
+            <div class="brief-input-wrap">
+              <textarea id="briefComment" placeholder="Пожелания, детали, вопросы... (необязательно)" data-name="comment"></textarea>
             </div>
-            <div class="form-group">
-              <label for="message">Расскажите о празднике</label>
-              <textarea id="message" placeholder="Дата, количество гостей, пожелания..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width:100%">Отправить заявку</button>
-          </form>
-          <div class="form-success" id="formSuccess">
-            <div class="form-success-icon">&#127881;</div>
-            <h4>Заявка отправлена!</h4>
-            <p>Мы свяжемся с вами в ближайшее время</p>
+          </div>
+
+          <!-- Done -->
+          <div class="brief-done" id="briefDone">
+            <div class="brief-done-icon">&#127881;</div>
+            <h3>Отлично, спасибо!</h3>
+            <p>Мы получили ваш бриф и свяжемся<br>в течение часа.</p>
+            <div class="brief-summary" id="briefSummary"></div>
+          </div>
+
+          <div class="brief-nav" id="briefNav">
+            <button class="brief-btn-back hidden" id="briefBack">&#8592; Назад</button>
+            <button class="brief-btn-next" id="briefNext" disabled>Далее &#8594;</button>
           </div>
         </div>
       </div>
@@ -1331,27 +1638,158 @@
     const track = document.getElementById('reviewsTrack');
     track.innerHTML += track.innerHTML;
 
-    // === Contact form ===
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // In production: send to backend/WhatsApp API
-      this.style.display = 'none';
-      document.getElementById('formSuccess').classList.add('show');
-    });
+    // === Brief / Let's Talk ===
+    (function() {
+      const card = document.getElementById('briefCard');
+      const steps = card.querySelectorAll('.brief-step');
+      const dots = card.querySelectorAll('.brief-progress-dot');
+      const btnNext = document.getElementById('briefNext');
+      const btnBack = document.getElementById('briefBack');
+      const nav = document.getElementById('briefNav');
+      const done = document.getElementById('briefDone');
+      const summary = document.getElementById('briefSummary');
+      let current = 0;
+      const data = {};
 
-    // === Phone mask ===
-    document.getElementById('phone').addEventListener('input', function(e) {
-      let val = this.value.replace(/\D/g, '');
-      if (val.startsWith('8')) val = '7' + val.slice(1);
-      if (val.startsWith('7')) {
-        let formatted = '+7';
-        if (val.length > 1) formatted += ' (' + val.slice(1, 4);
-        if (val.length > 4) formatted += ') ' + val.slice(4, 7);
-        if (val.length > 7) formatted += '-' + val.slice(7, 9);
-        if (val.length > 9) formatted += '-' + val.slice(9, 11);
-        this.value = formatted;
+      // Set min date to today
+      const dateInput = document.getElementById('briefDate');
+      dateInput.min = new Date().toISOString().split('T')[0];
+
+      // Option click
+      card.addEventListener('click', function(e) {
+        const opt = e.target.closest('.brief-option');
+        if (!opt) return;
+        const group = opt.parentElement;
+        const name = group.dataset.name;
+        // If step 4 has dateAlt and date — clear date if alt clicked, and vice versa
+        if (name === 'dateAlt') dateInput.value = '';
+        if (name === 'date') return;
+
+        // Single select per group
+        group.querySelectorAll('.brief-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        data[name] = opt.dataset.value;
+        checkCanProceed();
+      });
+
+      // Date input
+      dateInput.addEventListener('change', function() {
+        if (this.value) {
+          data.date = this.value;
+          // Clear dateAlt selection
+          const altGroup = card.querySelector('[data-name="dateAlt"]');
+          if (altGroup) altGroup.querySelectorAll('.brief-option').forEach(o => o.classList.remove('selected'));
+          delete data.dateAlt;
+          checkCanProceed();
+        }
+      });
+
+      // Phone mask
+      const phoneInput = document.getElementById('briefPhone');
+      phoneInput.addEventListener('input', function() {
+        let val = this.value.replace(/\D/g, '');
+        if (val.startsWith('8')) val = '7' + val.slice(1);
+        if (val.startsWith('7')) {
+          let f = '+7';
+          if (val.length > 1) f += ' (' + val.slice(1, 4);
+          if (val.length > 4) f += ') ' + val.slice(4, 7);
+          if (val.length > 7) f += '-' + val.slice(7, 9);
+          if (val.length > 9) f += '-' + val.slice(9, 11);
+          this.value = f;
+        }
+        checkCanProceed();
+      });
+
+      // Name input
+      document.getElementById('briefName').addEventListener('input', checkCanProceed);
+
+      function checkCanProceed() {
+        let ok = false;
+        switch (current) {
+          case 0: ok = !!data.eventType; break;
+          case 1: ok = !!data.guests; break;
+          case 2: ok = !!data.budget; break;
+          case 3: ok = !!(data.date || data.dateAlt); break;
+          case 4:
+            const name = document.getElementById('briefName').value.trim();
+            const phone = phoneInput.value.replace(/\D/g, '');
+            ok = name.length >= 2 && phone.length >= 11;
+            break;
+        }
+        btnNext.disabled = !ok;
       }
-    });
+
+      function goTo(step) {
+        steps[current].classList.remove('active');
+        current = step;
+        // Re-trigger animation
+        steps[current].classList.remove('active');
+        void steps[current].offsetWidth;
+        steps[current].classList.add('active');
+
+        dots.forEach((d, i) => {
+          d.classList.remove('active', 'done');
+          if (i < current) d.classList.add('done');
+          if (i === current) d.classList.add('active');
+        });
+
+        btnBack.classList.toggle('hidden', current === 0);
+        btnNext.textContent = current === 4 ? 'Отправить &#127881;' : 'Далее \u2192';
+        if (current === 4) btnNext.classList.add('finish');
+        else btnNext.classList.remove('finish');
+        checkCanProceed();
+      }
+
+      btnNext.addEventListener('click', function() {
+        if (current < 4) {
+          goTo(current + 1);
+        } else {
+          // Save contact info
+          data.name = document.getElementById('briefName').value.trim();
+          data.phone = phoneInput.value;
+          data.comment = document.getElementById('briefComment').value.trim();
+
+          // Show done
+          steps[current].classList.remove('active');
+          dots.forEach(d => { d.classList.remove('active'); d.classList.add('done'); });
+          nav.style.display = 'none';
+          done.classList.add('active');
+
+          // Summary
+          const labels = {
+            eventType: 'Мероприятие',
+            guests: 'Гостей',
+            budget: 'Бюджет',
+            date: 'Дата',
+            dateAlt: 'Дата',
+            name: 'Имя',
+            phone: 'Телефон'
+          };
+          const eventNames = {
+            birthday: 'День рождения',
+            kids: 'Детский праздник',
+            newyear: 'Новый год',
+            corporate: 'Корпоратив',
+            wedding: 'Свадьба',
+            other: 'Другое'
+          };
+
+          let html = '';
+          for (const [key, label] of Object.entries(labels)) {
+            if (data[key]) {
+              let val = data[key];
+              if (key === 'eventType') val = eventNames[val] || val;
+              html += '<div class="brief-summary-row"><span class="label">' + label + '</span><span class="value">' + val + '</span></div>';
+            }
+          }
+          summary.innerHTML = html;
+        }
+      });
+
+      btnBack.addEventListener('click', function() {
+        if (current > 0) goTo(current - 1);
+      });
+    })();
   </script>
 </body>
 </html>

@@ -44,6 +44,151 @@
       line-height: 1.6;
     }
 
+    body.loading { overflow: hidden; }
+
+    /* === INTRO === */
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--dark-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .intro.done { pointer-events: none; }
+
+    .intro-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .intro-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0;
+      animation: orb-in 1.5s ease-out forwards;
+    }
+
+    .intro-orb-1 {
+      width: 400px; height: 400px;
+      background: var(--primary);
+      top: 30%; left: 20%;
+      animation-delay: 0.2s;
+    }
+
+    .intro-orb-2 {
+      width: 350px; height: 350px;
+      background: var(--secondary);
+      bottom: 20%; right: 15%;
+      animation-delay: 0.5s;
+    }
+
+    .intro-orb-3 {
+      width: 250px; height: 250px;
+      background: var(--accent);
+      top: 10%; right: 30%;
+      animation-delay: 0.8s;
+    }
+
+    @keyframes orb-in {
+      0% { opacity: 0; transform: scale(0.3); }
+      100% { opacity: 0.15; transform: scale(1); }
+    }
+
+    .intro-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .intro-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      color: var(--white);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: intro-logo-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    .intro-logo span {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    @keyframes intro-logo-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro-line {
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      margin: 1.5rem auto;
+      animation: intro-line-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+    }
+
+    @keyframes intro-line-in {
+      to { width: 120px; }
+    }
+
+    .intro-tagline {
+      font-size: clamp(0.85rem, 2vw, 1.1rem);
+      color: var(--text-light);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: intro-logo-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+    }
+
+    .intro-sparks {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .intro-spark {
+      position: absolute;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--white);
+      opacity: 0;
+    }
+
+    /* Intro exit */
+    .intro.exit .intro-content {
+      animation: intro-content-out 0.6s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+    }
+
+    .intro.exit .intro-bg {
+      animation: intro-bg-out 0.8s cubic-bezier(0.55, 0, 1, 0.45) 0.2s forwards;
+    }
+
+    .intro.exit {
+      animation: intro-out 0.01s 1s forwards;
+    }
+
+    @keyframes intro-content-out {
+      to { opacity: 0; transform: scale(0.9) translateY(-30px); }
+    }
+
+    @keyframes intro-bg-out {
+      to { opacity: 0; }
+    }
+
+    @keyframes intro-out {
+      to { display: none; visibility: hidden; }
+    }
+
     h1, h2, h3, h4 { color: var(--white); }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
@@ -995,7 +1140,22 @@
     .stagger > *:nth-child(6) { transition-delay: 0.3s; }
   </style>
 </head>
-<body>
+<body class="loading">
+
+  <!-- INTRO -->
+  <div class="intro" id="intro">
+    <div class="intro-bg">
+      <div class="intro-orb intro-orb-1"></div>
+      <div class="intro-orb intro-orb-2"></div>
+      <div class="intro-orb intro-orb-3"></div>
+    </div>
+    <div class="intro-sparks" id="introSparks"></div>
+    <div class="intro-content">
+      <div class="intro-logo">Boo<span>Ga</span>Gart</div>
+      <div class="intro-line"></div>
+      <div class="intro-tagline">Праздники под ключ</div>
+    </div>
+  </div>
 
   <!-- HEADER -->
   <header id="header">
@@ -1198,6 +1358,51 @@
   <a href="#" class="wa-float" id="wa-float" title="WhatsApp">&#128172;</a>
 
   <script>
+    // === Intro ===
+    (function() {
+      const intro = document.getElementById('intro');
+      const sparksEl = document.getElementById('introSparks');
+
+      // Create sparks
+      for (let i = 0; i < 40; i++) {
+        const s = document.createElement('div');
+        s.className = 'intro-spark';
+        const x = 50 + (Math.random() - 0.5) * 30;
+        const y = 50 + (Math.random() - 0.5) * 30;
+        s.style.left = x + '%';
+        s.style.top = y + '%';
+
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 100 + Math.random() * 300;
+        const tx = Math.cos(angle) * dist;
+        const ty = Math.sin(angle) * dist;
+        const delay = 1.8 + Math.random() * 0.5;
+        const dur = 0.6 + Math.random() * 0.4;
+
+        s.style.animation = `spark-fly ${dur}s cubic-bezier(0.16,1,0.3,1) ${delay}s forwards`;
+        s.style.setProperty('--tx', tx + 'px');
+        s.style.setProperty('--ty', ty + 'px');
+        sparksEl.appendChild(s);
+      }
+
+      // Add spark keyframes dynamically
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes spark-fly {
+          0% { opacity: 1; transform: translate(0,0) scale(1); }
+          100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Exit after 3s
+      setTimeout(() => {
+        intro.classList.add('exit');
+        document.body.classList.remove('loading');
+        setTimeout(() => intro.remove(), 1200);
+      }, 3000);
+    })();
+
     // === Particles ===
     (function() {
       const canvas = document.getElementById('particles');

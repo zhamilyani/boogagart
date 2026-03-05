@@ -190,9 +190,10 @@
     .countdown { display: flex; gap: 1rem; }
     .cd-item { text-align: center; }
     .cd-num {
-      font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--white);
-      background: var(--dark-2); border: 1px solid var(--dark-4); border-radius: 8px;
+      font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--primary);
+      background: var(--dark-2); border: 1px solid rgba(255,107,53,0.2); border-radius: 8px;
       width: 75px; height: 75px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.4rem;
+      box-shadow: 0 4px 15px rgba(255,107,53,0.08); text-shadow: 0 0 20px rgba(255,107,53,0.3);
     }
     .cd-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text); }
 
@@ -224,10 +225,13 @@
     .hfc-text span { font-size: 0.7rem; color: var(--text); }
 
     /* === SECTIONS === */
-    section { padding: 6rem 0; }
+    section { padding: 6rem 0; position: relative; }
+    section::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent 0%, var(--primary) 20%, var(--accent) 50%, var(--secondary) 80%, transparent 100%); opacity: 0.3; }
+    section:last-of-type::after { display: none; }
     .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-tag { display: inline-block; padding: 0.35rem 1rem; background: rgba(255,107,53,0.08); border: 1px solid rgba(255,107,53,0.15); border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.8rem; }
+    .section-tag { display: inline-block; padding: 0.35rem 1rem; background: rgba(255,107,53,0.12); border: 1px solid rgba(255,107,53,0.25); border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.8rem; }
     .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 0.8rem; }
+    .section-header h2 em { font-style: normal; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .section-header p { max-width: 550px; margin: 0 auto; font-size: 1rem; }
 
     /* === ABOUT === */
@@ -243,17 +247,19 @@
     .about-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
 
     .about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2.5rem; }
-    .about-stat { padding: 1.2rem; background: var(--dark-3); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; text-align: center; transition: border-color 0.3s; }
-    .about-stat:hover { border-color: rgba(255,107,53,0.2); }
-    .about-stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--white); }
+    .about-stat { padding: 1.2rem; background: var(--dark-3); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; text-align: center; transition: all 0.3s; position: relative; overflow: hidden; }
+    .about-stat::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gradient); }
+    .about-stat:hover { border-color: rgba(255,107,53,0.3); box-shadow: 0 5px 20px rgba(255,107,53,0.08); }
+    .about-stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .about-stat-label { font-size: 0.75rem; color: var(--text); margin-top: 0.2rem; }
 
     /* === SERVICES === */
     .services { background: var(--dark); }
     .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-    .svc-card { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.04); border-radius: var(--radius); padding: 2.2rem 1.8rem; transition: all 0.3s; position: relative; overflow: hidden; }
+    .svc-card { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 2.2rem 1.8rem; transition: all 0.4s; position: relative; overflow: hidden; }
+    .svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient); opacity: 0.6; }
     .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gradient); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
-    .svc-card:hover { transform: translateY(-5px); border-color: rgba(255,107,53,0.15); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+    .svc-card:hover { transform: translateY(-5px); border-color: rgba(255,107,53,0.25); box-shadow: 0 15px 40px rgba(255,107,53,0.1), 0 5px 20px rgba(0,0,0,0.3); }
     .svc-card:hover::after { transform: scaleX(1); }
     .svc-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
     .svc-card h3 { font-size: 1.1rem; margin-bottom: 0.6rem; font-family: 'Poppins', sans-serif; font-weight: 600; }
@@ -262,11 +268,11 @@
     /* === SCHEDULE / PROCESS === */
     .schedule { background: var(--dark-2); }
     .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--dark-4); transform: translateX(-50%); }
+    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent), var(--secondary)); transform: translateX(-50%); opacity: 0.5; }
     .tl-item { display: flex; align-items: flex-start; margin-bottom: 3rem; position: relative; }
     .tl-item:nth-child(odd) { flex-direction: row-reverse; text-align: right; }
-    .tl-content { width: 45%; padding: 1.5rem; background: var(--dark-3); border: 1px solid rgba(255,255,255,0.04); border-radius: var(--radius); transition: border-color 0.3s; }
-    .tl-content:hover { border-color: rgba(255,107,53,0.2); }
+    .tl-content { width: 45%; padding: 1.5rem; background: var(--dark-3); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); transition: all 0.3s; }
+    .tl-content:hover { border-color: rgba(255,107,53,0.3); box-shadow: 0 8px 25px rgba(255,107,53,0.08); }
     .tl-dot { position: absolute; left: 50%; top: 1.5rem; width: 16px; height: 16px; border-radius: 50%; background: var(--gradient); border: 3px solid var(--dark-2); transform: translateX(-50%); z-index: 1; }
     .tl-step { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); font-weight: 600; margin-bottom: 0.4rem; }
     .tl-content h3 { font-size: 1rem; margin-bottom: 0.4rem; font-family: 'Poppins', sans-serif; font-weight: 600; }
@@ -295,7 +301,8 @@
     .reviews-track { display: flex; gap: 1.5rem; animation: scroll-r 35s linear infinite; padding: 1rem 0; }
     .reviews-track:hover { animation-play-state: paused; }
     @keyframes scroll-r { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .rv-card { min-width: 370px; background: var(--dark-3); border: 1px solid rgba(255,255,255,0.04); border-radius: var(--radius); padding: 2rem; }
+    .rv-card { min-width: 370px; background: var(--dark-3); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 2rem; transition: border-color 0.3s; border-top: 2px solid var(--primary); }
+    .rv-card:hover { border-color: rgba(255,107,53,0.3); }
     .rv-stars { color: #F59E0B; font-size: 0.85rem; margin-bottom: 0.8rem; }
     .rv-text { font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; color: var(--text-light); }
     .rv-author { display: flex; align-items: center; gap: 1rem; }
@@ -306,10 +313,12 @@
     /* === WHY US === */
     .why-us { background: var(--dark); }
     .features-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
-    .feat-card { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.04); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.3s; }
-    .feat-card:hover { border-color: rgba(255,107,53,0.15); transform: translateY(-5px); }
-    .feat-icon { width: 65px; height: 65px; border-radius: 14px; background: rgba(255,107,53,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1.2rem; transition: all 0.3s; }
-    .feat-card:hover .feat-icon { background: var(--gradient); transform: rotate(-5deg); }
+    .feat-card { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.4s; position: relative; }
+    .feat-card::before { content: ''; position: absolute; inset: -1px; border-radius: var(--radius); background: var(--gradient); opacity: 0; transition: opacity 0.4s; z-index: -1; }
+    .feat-card:hover { border-color: transparent; transform: translateY(-5px); box-shadow: 0 15px 35px rgba(255,107,53,0.12); }
+    .feat-card:hover::before { opacity: 0.15; }
+    .feat-icon { width: 65px; height: 65px; border-radius: 14px; background: rgba(255,107,53,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1.2rem; transition: all 0.3s; }
+    .feat-card:hover .feat-icon { background: var(--gradient); transform: rotate(-5deg) scale(1.05); }
     .feat-card h3 { font-size: 0.95rem; margin-bottom: 0.5rem; font-family: 'Poppins', sans-serif; font-weight: 600; }
     .feat-card p { font-size: 0.83rem; }
 
@@ -369,14 +378,15 @@
 
     /* === CTA === */
     .cta { background: var(--dark); text-align: center; padding: 6rem 0; position: relative; overflow: hidden; }
-    .cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255,107,53,0.06) 0%, transparent 65%); }
+    .cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255,107,53,0.12) 0%, rgba(255,51,102,0.06) 40%, transparent 70%); }
+    .cta::after { display: none; }
     .cta > * { position: relative; z-index: 1; }
     .cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,4vw,2.5rem); margin-bottom: 0.8rem; }
     .cta p { color: var(--text-light); font-size: 1.05rem; margin-bottom: 2rem; }
     .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
     /* === FOOTER === */
-    footer { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,0.04); }
+    footer { background: var(--dark-2); border-top: 2px solid; border-image: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary)) 1; }
     .footer-top { padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
     .footer-top-inner { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; font-size: 0.85rem; }
     .footer-top-inner a, .footer-top-inner span { color: var(--text-light); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
@@ -525,7 +535,7 @@
   <!-- SERVICES -->
   <section class="services" id="services">
     <div class="container">
-      <div class="section-header"><div class="section-tag">Услуги</div><h2>Что мы делаем</h2><p>Всё для идеального праздника — от идеи до реализации</p></div>
+      <div class="section-header"><div class="section-tag">Услуги</div><h2>Что мы <em>делаем</em></h2><p>Всё для идеального праздника — от идеи до реализации</p></div>
       <div class="services-grid stagger">
         <div class="svc-card reveal"><span class="svc-icon">&#127874;</span><h3>Дни рождения</h3><p>Детские и взрослые праздники с уникальным сценарием, декором и развлечениями</p></div>
         <div class="svc-card reveal"><span class="svc-icon">&#127876;</span><h3>Дед Мороз и Снегурочка</h3><p>Новогодние поздравления на дом, в офис или корпоратив. Волшебство гарантировано</p></div>
@@ -540,7 +550,7 @@
   <!-- SCHEDULE/PROCESS -->
   <section class="schedule" id="schedule">
     <div class="container">
-      <div class="section-header"><div class="section-tag">Процесс</div><h2>Как мы работаем</h2><p>4 простых шага к идеальному празднику</p></div>
+      <div class="section-header"><div class="section-tag">Процесс</div><h2>Как мы <em>работаем</em></h2><p>4 простых шага к идеальному празднику</p></div>
       <div class="timeline">
         <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-content"><div class="tl-step">Шаг 01</div><h3>Обсуждаем идею</h3><p>Вы рассказываете о пожеланиях, мы предлагаем лучшие варианты и форматы</p></div></div>
         <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-content"><div class="tl-step">Шаг 02</div><h3>Разрабатываем план</h3><p>Создаём сценарий, подбираем локацию, декор и артистов под ваш бюджет</p></div></div>
@@ -553,7 +563,7 @@
   <!-- GALLERY -->
   <section class="gallery" id="gallery">
     <div class="container">
-      <div class="section-header"><div class="section-tag">Галерея</div><h2>Наши работы</h2><p>Моменты радости, которые мы создаём</p></div>
+      <div class="section-header"><div class="section-tag">Галерея</div><h2>Наши <em>работы</em></h2><p>Моменты радости, которые мы создаём</p></div>
       <div class="gallery-grid stagger">
         <div class="g-item reveal"><div class="g-ph">&#127874;<span>День рождения</span></div><div class="g-overlay">&#128248; Смотреть</div></div>
         <div class="g-item reveal"><div class="g-ph">&#127876;<span>Новый год</span></div><div class="g-overlay">&#128248; Смотреть</div></div>
@@ -568,7 +578,7 @@
 
   <!-- REVIEWS -->
   <section class="reviews" id="reviews">
-    <div class="container"><div class="section-header"><div class="section-tag">Отзывы</div><h2>Что говорят клиенты</h2><p>Доверие — лучшая рекомендация</p></div></div>
+    <div class="container"><div class="section-header"><div class="section-tag">Отзывы</div><h2>Что говорят <em>клиенты</em></h2><p>Доверие — лучшая рекомендация</p></div></div>
     <div class="reviews-track" id="reviewsTrack">
       <div class="rv-card"><div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rv-text">Заказывали Деда Мороза для детей. Пришли вовремя, дети в восторге! Очень профессионально и весело.</p><div class="rv-author"><div class="rv-avatar">А</div><div><div class="rv-name">Айгуль М.</div><div class="rv-event">Новый год, 2025</div></div></div></div>
       <div class="rv-card"><div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rv-text">День рождения дочки — квест, аниматоры, оформление. Всё идеально! Ребёнок до сих пор вспоминает.</p><div class="rv-author"><div class="rv-avatar">М</div><div><div class="rv-name">Марина К.</div><div class="rv-event">День рождения, 2025</div></div></div></div>
@@ -582,7 +592,7 @@
   <!-- WHY US -->
   <section class="why-us">
     <div class="container">
-      <div class="section-header"><div class="section-tag">Преимущества</div><h2>Почему выбирают нас</h2><p>Мы не просто организуем праздники — мы создаём эмоции</p></div>
+      <div class="section-header"><div class="section-tag">Преимущества</div><h2>Почему выбирают <em>нас</em></h2><p>Мы не просто организуем праздники — мы создаём эмоции</p></div>
       <div class="features-grid stagger">
         <div class="feat-card reveal"><div class="feat-icon">&#128161;</div><h3>Креативный подход</h3><p>Нестандартные идеи и свежие решения для каждого</p></div>
         <div class="feat-card reveal"><div class="feat-icon">&#128276;</div><h3>Всё под ключ</h3><p>От сценария до уборки — вам остаётся наслаждаться</p></div>
@@ -648,22 +658,22 @@
     (function(){
       const intro=document.getElementById('intro'), sparks=document.getElementById('introSparks');
       const colors=['#FF6B35','#FF3366','#00C9A7','#6366F1','#FFFFFF','#F59E0B'];
-      for(let i=0;i<60;i++){
+      for(let i=0;i<40;i++){
         const s=document.createElement('div');
         s.className='intro-spark';
-        s.style.left=50+(Math.random()-0.5)*20+'%';
-        s.style.top=50+(Math.random()-0.5)*20+'%';
-        const a=Math.random()*Math.PI*2,d=150+Math.random()*500;
+        s.style.left=50+(Math.random()-0.5)*30+'%';
+        s.style.top=50+(Math.random()-0.5)*30+'%';
+        const a=Math.random()*Math.PI*2,d=400+Math.random()*900;
         s.style.setProperty('--tx',Math.cos(a)*d+'px');
         s.style.setProperty('--ty',Math.sin(a)*d+'px');
-        const size=4+Math.random()*10;
+        const size=40+Math.random()*100;
         s.style.width=size+'px'; s.style.height=size+'px';
         s.style.background=colors[Math.floor(Math.random()*colors.length)];
-        s.style.boxShadow='0 0 '+(size*2)+'px '+s.style.background;
-        s.style.animation='spark-fly '+(0.5+Math.random()*0.6)+'s cubic-bezier(0.16,1,0.3,1) '+(1.6+Math.random()*0.6)+'s forwards';
+        s.style.boxShadow='0 0 '+(size*3)+'px '+(size)+'px '+s.style.background;
+        s.style.animation='spark-fly '+(2+Math.random()*2)+'s cubic-bezier(0.16,1,0.3,1) '+(1.6+Math.random()*0.6)+'s forwards';
         sparks.appendChild(s);
       }
-      setTimeout(()=>{intro.classList.add('exit');document.body.classList.remove('loading');setTimeout(()=>intro.remove(),1200);},3200);
+      setTimeout(()=>{intro.classList.add('exit');document.body.classList.remove('loading');setTimeout(()=>intro.remove(),1200);},5500);
     })();
 
     // === Countdown ===

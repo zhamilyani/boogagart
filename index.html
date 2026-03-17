@@ -68,16 +68,12 @@
     .intro-content { position: relative; z-index: 1; text-align: center; }
 
     .intro-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(4rem, 10vw, 8rem);
-      font-weight: 800; color: var(--white);
       opacity: 0; transform: translateY(50px) scale(0.9);
       animation: intro-pop 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
-      text-shadow: 0 0 80px rgba(255,107,53,0.5), 0 0 160px rgba(255,51,102,0.3);
     }
-    .intro-logo span {
-      background: var(--gradient);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    .intro-logo img {
+      width: clamp(320px, 65vw, 650px); height: auto;
+      filter: drop-shadow(0 0 80px rgba(255,107,53,0.4)) drop-shadow(0 0 160px rgba(255,51,102,0.2));
     }
 
     @keyframes intro-pop {
@@ -132,8 +128,9 @@
 
     .header-inner { max-width: 1170px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; }
 
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 800; color: var(--white); text-decoration: none; }
-    .logo span { color: var(--primary); }
+    .logo { text-decoration: none; display: inline-flex; align-items: center; }
+    .logo img { height: 55px; width: auto; transition: height 0.3s; }
+    header.scrolled .logo img { height: 40px; }
 
     nav { display: flex; align-items: center; gap: 2rem; }
     nav a { color: var(--text-light); text-decoration: none; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s; }
@@ -392,6 +389,7 @@
     .footer-top-inner a, .footer-top-inner span { color: var(--text-light); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
     .footer-main { max-width: 1170px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
     .footer-brand .logo { margin-bottom: 1rem; display: inline-block; }
+    .footer-brand .logo img { height: 60px; }
     .footer-brand p { font-size: 0.85rem; line-height: 1.7; }
     footer h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 1rem; font-family: 'Poppins', sans-serif; }
     footer a { color: var(--text); text-decoration: none; transition: color 0.3s; }
@@ -450,7 +448,7 @@
     </div>
     <div class="intro-sparks" id="introSparks"></div>
     <div class="intro-content">
-      <div class="intro-logo">Boo<span>Gag</span>Art</div>
+      <div class="intro-logo"><img src="logo.png" alt="BooGagArt"></div>
       <div class="intro-line"></div>
       <div class="intro-tagline">Праздники под ключ</div>
     </div>
@@ -459,7 +457,7 @@
   <!-- HEADER -->
   <header id="header">
     <div class="header-inner">
-      <a href="#hero" class="logo">Boo<span>Gag</span>Art</a>
+      <a href="#hero" class="logo"><img src="logo.png" alt="BooGagArt"></a>
       <nav id="nav">
         <a href="#about">О нас</a>
         <a href="#services">Услуги</a>
@@ -644,7 +642,7 @@
   <footer>
     <div class="footer-top"><div class="footer-top-inner"><span>&#128222; Скоро</span><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener">&#128247; @boogagart</a><span>&#128205; Алматы, Казахстан</span></div></div>
     <div class="footer-main">
-      <div class="footer-brand"><a href="#hero" class="logo">Boo<span>Gag</span>Art</a><p>Организация праздников под ключ в Алматы. Нестандартные идеи, яркие эмоции.</p><div class="social-links"><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener" class="social-link" title="Instagram">&#128247;</a></div></div>
+      <div class="footer-brand"><a href="#hero" class="logo"><img src="logo.png" alt="BooGagArt"></a><p>Организация праздников под ключ в Алматы. Нестандартные идеи, яркие эмоции.</p><div class="social-links"><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener" class="social-link" title="Instagram">&#128247;</a></div></div>
       <div><h4>Навигация</h4><div class="f-links"><a href="#about">О нас</a><a href="#services">Услуги</a><a href="#schedule">Процесс</a><a href="#gallery">Галерея</a><a href="#reviews">Отзывы</a><a href="#contact">Контакты</a></div></div>
       <div><h4>Контакты</h4><div class="f-contacts"><span>&#128205; Алматы, Казахстан</span><span>&#128172; WhatsApp — скоро</span><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener">&#128247; @boogagart</a></div></div>
     </div>
@@ -713,7 +711,7 @@
       document.getElementById('bName').addEventListener('input',ck);
       function ck(){let ok=false;switch(c){case 0:ok=!!d.eventType;break;case 1:ok=!!d.guests;break;case 2:ok=!!d.budget;break;case 3:ok=!!(d.date||d.dateAlt);break;case 4:ok=document.getElementById('bName').value.trim().length>=2&&ph.value.replace(/\D/g,'').length>=11;break;}nx.disabled=!ok;}
       function go(s){steps[c].classList.remove('active');c=s;void steps[c].offsetWidth;steps[c].classList.add('active');dots.forEach((x,i)=>{x.classList.remove('active','done');if(i<c)x.classList.add('done');if(i===c)x.classList.add('active');});bk.classList.toggle('hidden',c===0);nx.innerHTML=c===4?'Отправить &#127881;':'Далее &#8594;';nx.classList.toggle('finish',c===4);ck();}
-      nx.addEventListener('click',()=>{if(c<4)return go(c+1);d.name=document.getElementById('bName').value.trim();d.phone=ph.value;d.comment=document.getElementById('bComment').value.trim();steps[c].classList.remove('active');dots.forEach(x=>{x.classList.remove('active');x.classList.add('done');});nv.style.display='none';dn.classList.add('active');const lb={eventType:'Мероприятие',guests:'Гостей',budget:'Бюджет',date:'Дата',dateAlt:'Дата',name:'Имя',phone:'Телефон'},nm={birthday:'День рождения',kids:'Детский праздник',newyear:'Новый год',corporate:'Корпоратив',wedding:'Свадьба',other:'Другое'};let h='';for(const[k,l]of Object.entries(lb)){if(d[k]){let v=d[k];if(k==='eventType')v=nm[v]||v;h+=`<div class="bd-row"><span class="l">${l}</span><span class="v">${v}</span></div>`;}}sm.innerHTML=h;try{fetch('https://boogagart-crm-production.up.railway.app/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...d,status:'new',source:'website'})}).catch(()=>{});}catch(e){}});
+      nx.addEventListener('click',()=>{if(c<4)return go(c+1);d.name=document.getElementById('bName').value.trim();d.phone=ph.value;d.comment=document.getElementById('bComment').value.trim();steps[c].classList.remove('active');dots.forEach(x=>{x.classList.remove('active');x.classList.add('done');});nv.style.display='none';dn.classList.add('active');const lb={eventType:'Мероприятие',guests:'Гостей',budget:'Бюджет',date:'Дата',dateAlt:'Дата',name:'Имя',phone:'Телефон'},nm={birthday:'День рождения',kids:'Детский праздник',newyear:'Новый год',corporate:'Корпоратив',wedding:'Свадьба',other:'Другое'};let h='';for(const[k,l]of Object.entries(lb)){if(d[k]){let v=d[k];if(k==='eventType')v=nm[v]||v;h+=`<div class="bd-row"><span class="l">${l}</span><span class="v">${v}</span></div>`;}}sm.innerHTML=h;try{fetch('https://boogagart-crm-production.up.railway.app/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:d.name,phone:d.phone,eventType:d.eventType,guests:d.guests,budget:d.budget,eventDate:d.date||'',comment:d.comment||(d.dateAlt?'Дата: '+d.dateAlt:''),status:'new',source:'website'})}).catch(()=>{});}catch(e){}});
       bk.addEventListener('click',()=>{if(c>0)go(c-1);});
     })();
   </script>

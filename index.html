@@ -9,16 +9,17 @@
   <meta property="og:description" content="Организация праздников в Алматы. Нестандартные идеи и весёлые эксперименты!">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --primary: #FF6B35;
-      --primary-dark: #E55A2B;
-      --primary-light: #FF8F65;
-      --secondary: #1B2CC1;
-      --accent: #00C9A7;
+      --primary: #CDA434;
+      --primary-dark: #B8922D;
+      --primary-light: #E2BE5A;
+      --secondary: #8B7327;
+      --accent: #FFD700;
+      --gold: #FFD700;
       --dark: #0D1117;
       --dark-2: #161B22;
       --dark-3: #21262D;
@@ -28,14 +29,14 @@
       --text: #8B949E;
       --text-light: #C9D1D9;
       --heading: #FFFFFF;
-      --gradient: linear-gradient(135deg, #FF6B35 0%, #FF3366 100%);
-      --gradient-blue: linear-gradient(135deg, #1B2CC1 0%, #6366F1 100%);
+      --gradient: linear-gradient(135deg, #CDA434 0%, #FFD700 100%);
+      --gradient-blue: linear-gradient(135deg, #8B7327 0%, #CDA434 100%);
       --shadow: 0 20px 50px rgba(0,0,0,0.3);
       --radius: 12px;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: 'Poppins', sans-serif; color: var(--text); background: var(--dark); overflow-x: hidden; line-height: 1.7; }
+    body { font-family: 'Jost', sans-serif; color: var(--text); background: var(--dark); overflow-x: hidden; line-height: 1.7; }
     body.loading { overflow: hidden; }
     h1,h2,h3,h4 { color: var(--heading); }
     .container { max-width: 1170px; margin: 0 auto; padding: 0 2rem; }
@@ -44,77 +45,48 @@
     /* === INTRO === */
     .intro {
       position: fixed; inset: 0; z-index: 9999;
-      background: var(--dark);
+      background: #0a0e14;
       display: flex; align-items: center; justify-content: center;
     }
-    .intro.done { pointer-events: none; }
 
-    .intro-bg { position: absolute; inset: 0; overflow: hidden; }
-
-    .intro-orb {
-      position: absolute; border-radius: 50%; filter: blur(60px);
-      opacity: 0; animation: orb-in 1.7s ease-out forwards;
-    }
-    .intro-orb-1 { width: 500px; height: 500px; background: #FF6B35; top: 20%; left: 10%; animation-delay: 0.15s; }
-    .intro-orb-2 { width: 450px; height: 450px; background: #FF3366; bottom: 10%; right: 5%; animation-delay: 0.4s; }
-    .intro-orb-3 { width: 350px; height: 350px; background: #1B2CC1; top: 5%; right: 20%; animation-delay: 0.7s; }
-    .intro-orb-4 { width: 300px; height: 300px; background: #00C9A7; bottom: 30%; left: 30%; animation-delay: 1s; }
-
-    @keyframes orb-in {
-      0% { opacity: 0; transform: scale(0.2); }
-      100% { opacity: 0.25; transform: scale(1); }
-    }
+    .intro canvas { position: absolute; inset: 0; z-index: 0; }
 
     .intro-content { position: relative; z-index: 1; text-align: center; }
 
     .intro-logo {
-      opacity: 0; transform: translateY(50px) scale(0.9);
-      animation: intro-pop 1.1s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;
+      opacity: 0; transform: translateY(40px) scale(0.9);
+      animation: intro-pop 1.2s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
     }
     .intro-logo img {
-      width: clamp(320px, 65vw, 650px); height: auto;
-      filter: drop-shadow(0 0 80px rgba(255,107,53,0.4)) drop-shadow(0 0 160px rgba(255,51,102,0.2));
+      width: clamp(300px, 60vw, 600px); height: auto;
+      filter: drop-shadow(0 0 40px rgba(205,164,52,0.5)) drop-shadow(0 0 100px rgba(255,215,0,0.2));
     }
 
-    @keyframes intro-pop {
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
+    @keyframes intro-pop { to { opacity: 1; transform: translateY(0) scale(1); } }
 
     .intro-line {
-      width: 0; height: 3px;
-      background: var(--gradient);
-      margin: 1.5rem auto;
-      border-radius: 2px;
-      animation: intro-line 1s cubic-bezier(0.16,1,0.3,1) 1.5s forwards;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, #CDA434, #FFD700, #CDA434, transparent);
+      margin: 1.2rem auto;
+      animation: intro-line 1.2s cubic-bezier(0.16,1,0.3,1) 1.4s forwards;
     }
-    @keyframes intro-line { to { width: 180px; } }
+    @keyframes intro-line { to { width: 220px; } }
 
     .intro-tagline {
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      color: var(--text-light);
-      letter-spacing: 5px; text-transform: uppercase;
-      opacity: 0; transform: translateY(20px);
-      animation: intro-pop 0.85s cubic-bezier(0.16,1,0.3,1) 2s forwards;
+      font-size: clamp(0.85rem, 2vw, 1.2rem);
+      color: #CDA434;
+      letter-spacing: 8px; text-transform: uppercase; font-weight: 300;
+      opacity: 0; transform: translateY(15px);
+      animation: intro-pop 0.9s cubic-bezier(0.16,1,0.3,1) 2s forwards;
     }
 
-    .intro-sparks { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+    .intro.exit .intro-content { animation: out-up 0.8s cubic-bezier(0.55,0,1,0.45) forwards; }
+    .intro.exit canvas { animation: fade-out 1s 0.2s forwards; }
+    .intro.exit { animation: hide 0.01s 1.3s forwards; }
 
-    .intro-spark {
-      position: absolute; border-radius: 50%; opacity: 0;
-    }
-
-    .intro.exit .intro-content { animation: out-up 1s cubic-bezier(0.55,0,1,0.45) forwards; }
-    .intro.exit .intro-bg { animation: fade-out 1.3s 0.3s forwards; }
-    .intro.exit { animation: hide 0.01s 1.6s forwards; }
-
-    @keyframes out-up { to { opacity: 0; transform: scale(1.1) translateY(-40px); } }
+    @keyframes out-up { to { opacity: 0; transform: scale(1.05) translateY(-30px); } }
     @keyframes fade-out { to { opacity: 0; } }
     @keyframes hide { to { display: none; visibility: hidden; } }
-
-    @keyframes spark-fly {
-      0% { opacity: 1; transform: translate(0,0) scale(1); }
-      100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
-    }
 
     /* === HEADER === */
     header {
@@ -137,7 +109,7 @@
     nav a:hover { color: var(--primary); }
 
     .nav-cta {
-      padding: 0.55rem 1.5rem; background: var(--gradient); color: var(--white) !important;
+      padding: 0.55rem 1.5rem; background: var(--gradient); color: #1a1a1a !important;
       border-radius: 6px; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.5px;
     }
     .nav-cta:hover { opacity: 0.9; }
@@ -154,56 +126,81 @@
 
     .hero::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(255,107,53,0.08) 0%, transparent 60%),
-                  radial-gradient(ellipse at 70% 30%, rgba(27,44,193,0.06) 0%, transparent 50%);
+      background: radial-gradient(ellipse at 30% 50%, rgba(205,164,52,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 30%, rgba(139,115,39,0.06) 0%, transparent 50%);
     }
 
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; padding: 8rem 0 5rem; }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.45rem 1rem; background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.25);
+      padding: 0.45rem 1rem; background: rgba(205,164,52,0.1); border: 1px solid rgba(205,164,52,0.25);
       border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.5rem;
     }
     .hero-badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); animation: pulse-dot 1.5s infinite; }
     @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem; }
     .hero h1 em { font-style: normal; color: var(--primary); }
 
     .hero-desc { font-size: 1.05rem; color: var(--text-light); margin-bottom: 2rem; max-width: 500px; }
 
     .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
 
-    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; border-radius: 6px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; }
-    .btn-primary { background: var(--gradient); color: var(--white); box-shadow: 0 8px 25px rgba(255,107,53,0.3); }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255,107,53,0.4); }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; border-radius: 6px; font-family: 'Jost', sans-serif; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; }
+    .btn-primary { background: var(--gradient); color: #1a1a1a; box-shadow: 0 8px 25px rgba(205,164,52,0.3); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(205,164,52,0.4); }
     .btn-outline { background: transparent; color: var(--white); border: 1px solid var(--dark-4); }
     .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
     .btn-wa { background: #25D366; color: var(--white); box-shadow: 0 8px 25px rgba(37,211,102,0.25); }
     .btn-wa:hover { transform: translateY(-3px); }
 
-    /* Countdown */
-    .countdown { display: flex; gap: 1rem; }
-    .cd-item { text-align: center; }
-    .cd-num {
-      font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--primary);
-      background: var(--dark-2); border: 1px solid rgba(255,107,53,0.2); border-radius: 8px;
-      width: 75px; height: 75px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.4rem;
-      box-shadow: 0 4px 15px rgba(255,107,53,0.08); text-shadow: 0 0 20px rgba(255,107,53,0.3);
-    }
-    .cd-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text); }
-
     .hero-right { position: relative; }
 
     .hero-image {
-      width: 100%; aspect-ratio: 4/3; border-radius: var(--radius);
-      background: var(--gradient); opacity: 0.85;
+      width: 100%; border-radius: 4px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 5rem; position: relative; overflow: hidden;
-      box-shadow: var(--shadow);
+      position: relative;
+      padding: 14px;
+      background: linear-gradient(
+        160deg,
+        rgba(255,215,0,0.25) 0%,
+        rgba(205,164,52,0.1) 12%,
+        rgba(255,255,255,0.06) 25%,
+        rgba(205,164,52,0.04) 40%,
+        rgba(255,255,255,0.0) 50%,
+        rgba(205,164,52,0.05) 60%,
+        rgba(255,255,255,0.04) 75%,
+        rgba(205,164,52,0.12) 88%,
+        rgba(255,215,0,0.2) 100%
+      );
+      border: 1px solid rgba(205,164,52,0.25);
+      box-shadow:
+        0 15px 40px rgba(0,0,0,0.5),
+        0 2px 8px rgba(0,0,0,0.3),
+        0 0 25px rgba(205,164,52,0.08),
+        inset 0 1px 0 rgba(255,215,0,0.3),
+        inset 0 -1px 0 rgba(205,164,52,0.1),
+        inset 1px 0 0 rgba(255,215,0,0.15),
+        inset -1px 0 0 rgba(205,164,52,0.12);
     }
-    .hero-image::after { content: ''; position: absolute; inset: 0; border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); }
+    .hero-image::before {
+      content: ''; position: absolute; inset: 3px; border-radius: 2px;
+      border: 1px solid rgba(205,164,52,0.12);
+      box-shadow: inset 0 1px 0 rgba(255,215,0,0.15), inset 0 -1px 0 rgba(205,164,52,0.06);
+      pointer-events: none; z-index: 2;
+    }
+    .hero-image::after {
+      content: ''; position: absolute;
+      top: 5px; left: 15%; width: 50%; height: 12px;
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), rgba(205,164,52,0.1), transparent);
+      border-radius: 50%;
+      filter: blur(2px);
+      pointer-events: none; z-index: 3;
+    }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 2px; position: relative; z-index: 1;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+    }
 
     .hero-float-card {
       position: absolute; background: var(--dark-2); border: 1px solid var(--dark-4);
@@ -216,18 +213,18 @@
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
     .hfc-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
-    .hfc-icon-orange { background: rgba(255,107,53,0.15); }
-    .hfc-icon-green { background: rgba(0,201,167,0.15); }
+    .hfc-icon-orange { background: rgba(205,164,52,0.15); }
+    .hfc-icon-green { background: rgba(218,165,32,0.15); }
     .hfc-text strong { display: block; font-size: 0.85rem; color: var(--white); }
     .hfc-text span { font-size: 0.7rem; color: var(--text); }
 
     /* === SECTIONS === */
-    section { padding: 6rem 0; position: relative; }
+    section { padding: 6rem 0; position: relative; z-index: 1; }
     section::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent 0%, var(--primary) 20%, var(--accent) 50%, var(--secondary) 80%, transparent 100%); opacity: 0.3; }
     section:last-of-type::after { display: none; }
     .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-tag { display: inline-block; padding: 0.35rem 1rem; background: rgba(255,107,53,0.12); border: 1px solid rgba(255,107,53,0.25); border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.8rem; }
-    .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 0.8rem; }
+    .section-tag { display: inline-block; padding: 0.35rem 1rem; background: rgba(205,164,52,0.12); border: 1px solid rgba(205,164,52,0.25); border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.8rem; }
+    .section-header h2 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 0.8rem; }
     .section-header h2 em { font-style: normal; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .section-header p { max-width: 550px; margin: 0 auto; font-size: 1rem; }
 
@@ -239,28 +236,61 @@
     .about-video-play:hover { transform: scale(1.1); }
 
     .about-text .section-tag { margin-bottom: 0.8rem; }
-    .about-text h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem; }
+    .about-text h3 { font-family: 'Cinzel', serif; font-size: 1.8rem; margin-bottom: 1rem; }
     .about-text p { margin-bottom: 1rem; }
     .about-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
 
     .about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2.5rem; }
     .about-stat { padding: 1.2rem; background: var(--dark-3); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; text-align: center; transition: all 0.3s; position: relative; overflow: hidden; }
     .about-stat::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gradient); }
-    .about-stat:hover { border-color: rgba(255,107,53,0.3); box-shadow: 0 5px 20px rgba(255,107,53,0.08); }
-    .about-stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .about-stat:hover { border-color: rgba(205,164,52,0.3); box-shadow: 0 5px 20px rgba(205,164,52,0.08); }
+    .about-stat-num { font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .about-stat-label { font-size: 0.75rem; color: var(--text); margin-top: 0.2rem; }
 
     /* === SERVICES === */
     .services { background: var(--dark); }
     .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-    .svc-card { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 2.2rem 1.8rem; transition: all 0.4s; position: relative; overflow: hidden; }
+    .svc-card { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 2.2rem 1.8rem; transition: all 0.4s; position: relative; overflow: hidden; cursor: pointer; }
     .svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient); opacity: 0.6; }
     .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gradient); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
-    .svc-card:hover { transform: translateY(-5px); border-color: rgba(255,107,53,0.25); box-shadow: 0 15px 40px rgba(255,107,53,0.1), 0 5px 20px rgba(0,0,0,0.3); }
+    .svc-card:hover { transform: translateY(-5px); border-color: rgba(205,164,52,0.25); box-shadow: 0 15px 40px rgba(205,164,52,0.1), 0 5px 20px rgba(0,0,0,0.3); }
     .svc-card:hover::after { transform: scaleX(1); }
-    .svc-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
-    .svc-card h3 { font-size: 1.1rem; margin-bottom: 0.6rem; font-family: 'Poppins', sans-serif; font-weight: 600; }
+    .svc-icon { margin-bottom: 1.2rem; display: block; }
+    .svc-icon svg { width: 48px; height: 48px; stroke: var(--primary); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .feat-icon svg { width: 28px; height: 28px; stroke: var(--primary); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .feat-card:hover .feat-icon svg { stroke: var(--white); }
+    .hfc-icon svg { width: 22px; height: 22px; stroke: var(--primary); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .bc-icon svg { width: 20px; height: 20px; stroke: var(--primary); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .svc-card h3 { font-size: 1.1rem; margin-bottom: 0.6rem; font-family: 'Jost', sans-serif; font-weight: 600; }
     .svc-card p { font-size: 0.88rem; line-height: 1.7; }
+
+    .svc-card .svc-hint { font-size: 0.72rem; color: var(--primary); margin-top: 0.8rem; opacity: 0.6; transition: opacity 0.3s; }
+    .svc-card:hover .svc-hint { opacity: 1; }
+
+    /* === SERVICE MODAL === */
+    .svc-modal { position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+    .svc-modal.open { display: flex; opacity: 1; }
+    .svc-modal-inner { position: relative; max-width: 900px; width: 90%; max-height: 85vh; }
+    .svc-modal-close { position: absolute; top: -40px; right: 0; background: none; border: none; color: var(--white); font-size: 1.8rem; cursor: pointer; z-index: 2; opacity: 0.7; transition: opacity 0.3s; }
+    .svc-modal-close:hover { opacity: 1; }
+    .svc-modal-title { text-align: center; margin-bottom: 1.2rem; font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--white); }
+    .svc-modal-slider { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 16/10; background: var(--dark-2); }
+    .svc-modal-slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s; }
+    .svc-modal-slide.active { opacity: 1; }
+    .svc-modal-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .svc-modal-slide .svc-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; font-size: 3rem; color: rgba(255,255,255,0.7); }
+    .svc-modal-slide .svc-ph span { font-size: 0.9rem; font-weight: 500; }
+    .svc-modal-arr { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(205,164,52,0.8); border: none; color: #1a1a1a; font-size: 1.4rem; cursor: pointer; z-index: 2; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+    .svc-modal-arr:hover { background: var(--primary); transform: translateY(-50%) scale(1.1); }
+    .svc-modal-arr.prev { left: 12px; }
+    .svc-modal-arr.next { right: 12px; }
+    .svc-modal-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+    .svc-modal-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dark-4); border: none; cursor: pointer; transition: all 0.3s; }
+    .svc-modal-dot.active { background: var(--primary); transform: scale(1.3); }
+    @media (max-width: 768px) {
+      .svc-modal-inner { width: 95%; }
+      .svc-modal-arr { width: 36px; height: 36px; font-size: 1rem; }
+    }
 
     /* === SCHEDULE / PROCESS === */
     .schedule { background: var(--dark-2); }
@@ -269,29 +299,11 @@
     .tl-item { display: flex; align-items: flex-start; margin-bottom: 3rem; position: relative; }
     .tl-item:nth-child(odd) { flex-direction: row-reverse; text-align: right; }
     .tl-content { width: 45%; padding: 1.5rem; background: var(--dark-3); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); transition: all 0.3s; }
-    .tl-content:hover { border-color: rgba(255,107,53,0.3); box-shadow: 0 8px 25px rgba(255,107,53,0.08); }
+    .tl-content:hover { border-color: rgba(205,164,52,0.3); box-shadow: 0 8px 25px rgba(205,164,52,0.08); }
     .tl-dot { position: absolute; left: 50%; top: 1.5rem; width: 16px; height: 16px; border-radius: 50%; background: var(--gradient); border: 3px solid var(--dark-2); transform: translateX(-50%); z-index: 1; }
     .tl-step { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); font-weight: 600; margin-bottom: 0.4rem; }
-    .tl-content h3 { font-size: 1rem; margin-bottom: 0.4rem; font-family: 'Poppins', sans-serif; font-weight: 600; }
+    .tl-content h3 { font-size: 1rem; margin-bottom: 0.4rem; font-family: 'Jost', sans-serif; font-weight: 600; }
     .tl-content p { font-size: 0.85rem; }
-
-    /* === GALLERY === */
-    .gallery { background: var(--dark); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); grid-auto-rows: 220px; gap: 1rem; }
-    .g-item { border-radius: var(--radius); overflow: hidden; position: relative; cursor: pointer; transition: transform 0.3s; }
-    .g-item:first-child { grid-row: span 2; }
-    .g-item:hover { transform: scale(1.02); }
-    .g-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; font-size: 2.5rem; color: rgba(255,255,255,0.9); }
-    .g-ph span { font-size: 0.8rem; font-weight: 500; }
-    .g-item:nth-child(1) .g-ph { background: linear-gradient(135deg,#FF6B35,#FF8F65); font-size: 3.5rem; }
-    .g-item:nth-child(2) .g-ph { background: linear-gradient(135deg,#FF3366,#FF6B9D); }
-    .g-item:nth-child(3) .g-ph { background: linear-gradient(135deg,#1B2CC1,#6366F1); }
-    .g-item:nth-child(4) .g-ph { background: linear-gradient(135deg,#8B5CF6,#A78BFA); }
-    .g-item:nth-child(5) .g-ph { background: linear-gradient(135deg,#F59E0B,#FBBF24); }
-    .g-item:nth-child(6) .g-ph { background: linear-gradient(135deg,#00C9A7,#34D399); }
-    .g-overlay { position: absolute; inset: 0; background: rgba(13,17,23,0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; color: var(--white); font-weight: 600; }
-    .g-item:hover .g-overlay { opacity: 1; }
-    .gallery-more { text-align: center; margin-top: 2rem; }
 
     /* === REVIEWS === */
     .reviews { background: var(--dark-2); overflow: hidden; }
@@ -299,8 +311,8 @@
     .reviews-track:hover { animation-play-state: paused; }
     @keyframes scroll-r { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .rv-card { min-width: 370px; background: var(--dark-3); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 2rem; transition: border-color 0.3s; border-top: 2px solid var(--primary); }
-    .rv-card:hover { border-color: rgba(255,107,53,0.3); }
-    .rv-stars { color: #F59E0B; font-size: 0.85rem; margin-bottom: 0.8rem; }
+    .rv-card:hover { border-color: rgba(205,164,52,0.3); }
+    .rv-stars { color: #CFB53B; font-size: 0.85rem; margin-bottom: 0.8rem; }
     .rv-text { font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; color: var(--text-light); }
     .rv-author { display: flex; align-items: center; gap: 1rem; }
     .rv-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; font-size: 1rem; }
@@ -312,18 +324,18 @@
     .features-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
     .feat-card { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.4s; position: relative; }
     .feat-card::before { content: ''; position: absolute; inset: -1px; border-radius: var(--radius); background: var(--gradient); opacity: 0; transition: opacity 0.4s; z-index: -1; }
-    .feat-card:hover { border-color: transparent; transform: translateY(-5px); box-shadow: 0 15px 35px rgba(255,107,53,0.12); }
+    .feat-card:hover { border-color: transparent; transform: translateY(-5px); box-shadow: 0 15px 35px rgba(205,164,52,0.12); }
     .feat-card:hover::before { opacity: 0.15; }
-    .feat-icon { width: 65px; height: 65px; border-radius: 14px; background: rgba(255,107,53,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1.2rem; transition: all 0.3s; }
+    .feat-icon { width: 65px; height: 65px; border-radius: 14px; background: rgba(205,164,52,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1.2rem; transition: all 0.3s; }
     .feat-card:hover .feat-icon { background: var(--gradient); transform: rotate(-5deg) scale(1.05); }
-    .feat-card h3 { font-size: 0.95rem; margin-bottom: 0.5rem; font-family: 'Poppins', sans-serif; font-weight: 600; }
+    .feat-card h3 { font-size: 0.95rem; margin-bottom: 0.5rem; font-family: 'Jost', sans-serif; font-weight: 600; }
     .feat-card p { font-size: 0.83rem; }
 
     /* === BRIEF === */
     .brief { background: var(--dark-2); }
     .brief-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
     .brief-left .section-tag { margin-bottom: 0.8rem; }
-    .brief-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,2.8rem); line-height: 1.2; margin-bottom: 1rem; }
+    .brief-left h2 { font-family: 'Cinzel', serif; font-size: clamp(2rem,4vw,2.8rem); line-height: 1.2; margin-bottom: 1rem; }
     .brief-left h2 em { font-style: normal; color: var(--primary); }
     .brief-left > p { color: var(--text-light); font-size: 1rem; margin-bottom: 2rem; }
     .brief-contacts { display: flex; flex-direction: column; gap: 1rem; }
@@ -333,52 +345,62 @@
     .bc-item span { font-size: 0.78rem; color: var(--text); }
     .bc-item a { color: var(--primary); text-decoration: none; font-size: 0.83rem; font-weight: 600; }
 
-    .brief-card { background: var(--dark-3); border: 1px solid rgba(255,255,255,0.04); border-radius: 16px; padding: 2.5rem; position: relative; overflow: hidden; }
+    .brief-card { background: var(--dark-3); border: 1px solid rgba(205,164,52,0.12); border-radius: 16px; padding: 2.5rem; position: relative; overflow: hidden; }
     .brief-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient); }
     .bp { display: flex; gap: 0.4rem; margin-bottom: 2rem; }
     .bp-dot { flex: 1; height: 3px; border-radius: 2px; background: var(--dark-4); transition: background 0.4s; }
     .bp-dot.active { background: var(--primary); }
-    .bp-dot.done { background: var(--accent); }
+    .bp-dot.done { background: var(--gold); }
     .bs { display: none; animation: bs-in 0.4s ease; }
     .bs.active { display: block; }
     @keyframes bs-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .bs-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); font-weight: 600; margin-bottom: 0.4rem; }
-    .bs h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1.5rem; }
+    .bs h3 { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--accent); }
     .bo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
-    .bo { padding: 0.9rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; cursor: pointer; transition: all 0.25s; text-align: center; font-weight: 500; font-size: 0.83rem; background: var(--dark-4); color: var(--text-light); user-select: none; }
-    .bo:hover { border-color: rgba(255,107,53,0.25); }
-    .bo.selected { border-color: var(--primary); background: rgba(255,107,53,0.1); color: var(--white); }
+    .bo { padding: 0.9rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; cursor: pointer; transition: all 0.25s; text-align: center; font-weight: 500; font-size: 0.83rem; background: var(--dark-4); color: var(--primary); user-select: none; }
+    .bo:hover { border-color: rgba(205,164,52,0.25); }
+    .bo.selected { border-color: var(--primary); background: rgba(205,164,52,0.15); color: var(--accent); }
     .bo .bo-e { display: block; font-size: 1.4rem; margin-bottom: 0.2rem; }
-    .bi input, .bi textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 0.88rem; outline: none; background: var(--dark-4); color: var(--white); transition: border-color 0.3s; }
-    .bi input::placeholder, .bi textarea::placeholder { color: var(--text); }
-    .bi input:focus, .bi textarea:focus { border-color: var(--primary); }
+    .bi input, .bi textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid rgba(205,164,52,0.15); border-radius: 10px; font-family: 'Jost', sans-serif; font-size: 0.88rem; outline: none; background: rgba(48,54,61,0.7); color: var(--primary); transition: all 0.3s; }
+    .bi input::placeholder, .bi textarea::placeholder { color: rgba(205,164,52,0.35); }
+    .bi input:focus, .bi textarea:focus { border-color: var(--primary); background: rgba(205,164,52,0.06); box-shadow: 0 0 12px rgba(205,164,52,0.1); }
+    .bi input[type="date"] { color-scheme: dark; color: var(--primary); }
+    .bi input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.7) sepia(1) saturate(3) hue-rotate(10deg); cursor: pointer; padding: 4px; border-radius: 4px; transition: background 0.2s; }
+    .bi input[type="date"]::-webkit-calendar-picker-indicator:hover { background: rgba(205,164,52,0.15); }
+    .bi input[type="date"]::-webkit-datetime-edit-fields-wrapper { color: var(--primary); }
+    .bi input[type="date"]::-webkit-datetime-edit-day-field,
+    .bi input[type="date"]::-webkit-datetime-edit-month-field,
+    .bi input[type="date"]::-webkit-datetime-edit-year-field { color: var(--primary); }
+    .bi input[type="date"]::-webkit-datetime-edit-day-field:focus,
+    .bi input[type="date"]::-webkit-datetime-edit-month-field:focus,
+    .bi input[type="date"]::-webkit-datetime-edit-year-field:focus { background: rgba(205,164,52,0.2); color: var(--accent); border-radius: 3px; }
     .bi textarea { resize: vertical; min-height: 70px; }
     .bi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-bottom: 0.7rem; }
     .bn { display: flex; justify-content: space-between; align-items: center; margin-top: 1.8rem; }
-    .bn-back { background: none; border: none; color: var(--text); font-weight: 500; font-size: 0.83rem; cursor: pointer; font-family: 'Poppins', sans-serif; transition: color 0.3s; }
-    .bn-back:hover { color: var(--white); }
+    .bn-back { background: none; border: none; color: rgba(205,164,52,0.5); font-weight: 500; font-size: 0.83rem; cursor: pointer; font-family: 'Jost', sans-serif; transition: color 0.3s; }
+    .bn-back:hover { color: var(--primary); }
     .bn-back.hidden { visibility: hidden; }
-    .bn-next { padding: 0.75rem 2rem; border-radius: 6px; border: none; background: var(--gradient); color: var(--white); font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.83rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 6px 18px rgba(255,107,53,0.25); }
+    .bn-next { padding: 0.75rem 2rem; border-radius: 6px; border: none; background: var(--gradient); color: #1a1a1a; font-family: 'Jost', sans-serif; font-weight: 600; font-size: 0.83rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 6px 18px rgba(205,164,52,0.25); }
     .bn-next:hover { transform: translateY(-2px); }
     .bn-next:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
     .bn-next.finish { background: linear-gradient(135deg,#25D366,#1fb855); box-shadow: 0 6px 18px rgba(37,211,102,0.25); }
     .bd { display: none; text-align: center; padding: 2rem 0; animation: bs-in 0.5s ease; }
     .bd.active { display: block; }
     .bd-icon { font-size: 3.5rem; margin-bottom: 1rem; }
-    .bd h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.4rem; color: var(--accent); }
-    .bd p { color: var(--text-light); }
-    .bd-summary { margin-top: 1.2rem; text-align: left; background: var(--dark-4); border-radius: 10px; padding: 1rem 1.2rem; }
-    .bd-row { display: flex; justify-content: space-between; padding: 0.35rem 0; font-size: 0.78rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .bd h3 { font-family: 'Cinzel', serif; font-size: 1.4rem; margin-bottom: 0.4rem; color: var(--gold); }
+    .bd p { color: var(--primary); }
+    .bd-summary { margin-top: 1.2rem; text-align: left; background: rgba(205,164,52,0.06); border: 1px solid rgba(205,164,52,0.12); border-radius: 10px; padding: 1rem 1.2rem; }
+    .bd-row { display: flex; justify-content: space-between; padding: 0.35rem 0; font-size: 0.78rem; border-bottom: 1px solid rgba(205,164,52,0.08); }
     .bd-row:last-child { border: none; }
-    .bd-row .l { color: var(--text); }
-    .bd-row .v { font-weight: 600; color: var(--white); }
+    .bd-row .l { color: rgba(205,164,52,0.5); }
+    .bd-row .v { font-weight: 600; color: var(--gold); }
 
     /* === CTA === */
     .cta { background: var(--dark); text-align: center; padding: 6rem 0; position: relative; overflow: hidden; }
-    .cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255,107,53,0.12) 0%, rgba(255,51,102,0.06) 40%, transparent 70%); }
+    .cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(205,164,52,0.12) 0%, rgba(255,215,0,0.06) 40%, transparent 70%); }
     .cta::after { display: none; }
     .cta > * { position: relative; z-index: 1; }
-    .cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,4vw,2.5rem); margin-bottom: 0.8rem; }
+    .cta h2 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem,4vw,2.5rem); margin-bottom: 0.8rem; }
     .cta p { color: var(--text-light); font-size: 1.05rem; margin-bottom: 2rem; }
     .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
@@ -391,7 +413,7 @@
     .footer-brand .logo { margin-bottom: 1rem; display: inline-block; }
     .footer-brand .logo img { height: 60px; }
     .footer-brand p { font-size: 0.85rem; line-height: 1.7; }
-    footer h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 1rem; font-family: 'Poppins', sans-serif; }
+    footer h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 1rem; font-family: 'Jost', sans-serif; }
     footer a { color: var(--text); text-decoration: none; transition: color 0.3s; }
     footer a:hover { color: var(--primary); }
     .f-links { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.83rem; }
@@ -416,19 +438,155 @@
       .hero-grid, .about-grid, .brief-layout { grid-template-columns: 1fr; gap: 2rem; }
       .hero-right { order: -1; }
       .services-grid, .features-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
-      .g-item:first-child { grid-row: span 1; }
       .footer-main { grid-template-columns: 1fr; gap: 2rem; }
       .timeline::before { left: 20px; }
       .tl-item, .tl-item:nth-child(odd) { flex-direction: row; text-align: left; padding-left: 50px; }
       .tl-content { width: 100%; }
       .tl-dot { left: 20px; }
-      .countdown { gap: 0.6rem; }
-      .cd-num { width: 55px; height: 55px; font-size: 1.6rem; }
       .bo-grid, .bi-row { grid-template-columns: 1fr; }
       .rv-card { min-width: 290px; }
     }
-    @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
+    /* === GEO DECORATIONS === */
+    .geo-layer { position: fixed; inset: 0; z-index: 10; pointer-events: none; overflow: hidden; }
+    .geo {
+      position: absolute; border: 1px solid rgba(205,164,52,0.08);
+      opacity: 0.4;
+    }
+    /* треугольники */
+    .geo-tri { width: 0; height: 0; border: none; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom: 52px solid transparent; }
+    .geo-tri::after { content: ''; position: absolute; top: 8px; left: -22px; border-left: 22px solid transparent; border-right: 22px solid transparent; border-bottom: 38px solid transparent; }
+    .geo-tri, .geo-tri::after { border-bottom-color: rgba(205,164,52,0.06); }
+    .geo-tri.outline { border-bottom-color: transparent; }
+    .geo-tri.outline::before {
+      content: ''; position: absolute; top: 0; left: -30px;
+      width: 0; height: 0;
+      border-left: 30px solid transparent; border-right: 30px solid transparent;
+      border-bottom: 52px solid rgba(205,164,52,0.1);
+    }
+    .geo-tri.outline::after {
+      border-bottom-color: var(--dark); top: 6px; left: -24px;
+      border-left-width: 24px; border-right-width: 24px; border-bottom-width: 42px; z-index: 1;
+    }
+    /* ромбы */
+    .geo-diamond { width: 40px; height: 40px; background: rgba(205,164,52,0.04); border-color: rgba(205,164,52,0.1); transform: rotate(45deg); }
+    /* кольца */
+    .geo-ring { width: 80px; height: 80px; border-radius: 50%; background: transparent; border-color: rgba(205,164,52,0.07); }
+    /* линии */
+    .geo-line { height: 1px; border: none; background: linear-gradient(90deg, transparent, rgba(205,164,52,0.1), transparent); }
+    .geo-vline { width: 1px; border: none; background: linear-gradient(180deg, transparent, rgba(205,164,52,0.08), transparent); }
+
+    /* анимации */
+    @keyframes geo-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    @keyframes geo-float-r { 0%,100% { transform: translateY(0) rotate(45deg); } 50% { transform: translateY(-12px) rotate(45deg); } }
+    @keyframes geo-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes geo-pulse { 0%,100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.08); } }
+
+    .geo.f1 { animation: geo-float 8s ease-in-out infinite; }
+    .geo.f2 { animation: geo-float 10s ease-in-out infinite 1s; }
+    .geo.f3 { animation: geo-float 12s ease-in-out infinite 2s; }
+    .geo.f4 { animation: geo-float 9s ease-in-out infinite 0.5s; }
+    .geo.fr1 { animation: geo-float-r 8s ease-in-out infinite; }
+    .geo.fr2 { animation: geo-float-r 11s ease-in-out infinite 1.5s; }
+    .geo.sp1 { animation: geo-spin 40s linear infinite; }
+    .geo.sp2 { animation: geo-spin 55s linear infinite reverse; }
+    .geo.p1 { animation: geo-pulse 6s ease-in-out infinite; }
+    .geo.p2 { animation: geo-pulse 8s ease-in-out infinite 2s; }
+
+    /* праздничные геометрические фигуры */
+    .geo-confetti { width: 8px; height: 20px; border: none; background: rgba(205,164,52,0.12); border-radius: 2px; }
+    .geo-confetti.c2 { background: rgba(255,215,0,0.08); width: 6px; height: 16px; }
+    .geo-star { width: 0; height: 0; border: none; position: absolute; }
+    .geo-star::before, .geo-star::after { content: ''; position: absolute; }
+    .geo-star::before {
+      width: 20px; height: 20px;
+      background: transparent;
+      border: 1px solid rgba(205,164,52,0.12);
+      transform: rotate(45deg);
+      top: -10px; left: -10px;
+    }
+    .geo-star::after {
+      width: 20px; height: 20px;
+      background: transparent;
+      border: 1px solid rgba(205,164,52,0.08);
+      top: -10px; left: -10px;
+    }
+    /* бокал */
+    .geo-glass { width: 0; height: 0; border: none; }
+    .geo-glass::before {
+      content: ''; position: absolute;
+      width: 16px; height: 16px;
+      border: 1px solid rgba(205,164,52,0.1);
+      border-bottom: none;
+      border-radius: 0 0 50% 50%;
+      transform: rotate(180deg);
+      top: 0; left: -8px;
+    }
+    .geo-glass::after {
+      content: ''; position: absolute;
+      width: 1px; height: 14px;
+      background: rgba(205,164,52,0.1);
+      top: 16px; left: 0;
+    }
+    /* корона */
+    .geo-crown { width: 0; height: 0; border: none; }
+    .geo-crown::before {
+      content: ''; position: absolute;
+      width: 30px; height: 16px;
+      border: 1px solid rgba(205,164,52,0.1);
+      border-bottom: 2px solid rgba(205,164,52,0.12);
+      border-top: none;
+      clip-path: polygon(0% 100%, 0% 40%, 20% 70%, 40% 20%, 50% 50%, 60% 20%, 80% 70%, 100% 40%, 100% 100%);
+      background: rgba(205,164,52,0.04);
+      top: -8px; left: -15px;
+    }
+    /* подарок */
+    .geo-gift { width: 22px; height: 18px; border: 1px solid rgba(205,164,52,0.1); border-radius: 2px; background: rgba(205,164,52,0.03); }
+    .geo-gift::before {
+      content: ''; position: absolute;
+      width: 22px; height: 1px;
+      background: rgba(205,164,52,0.1);
+      top: 8px; left: -1px;
+    }
+    .geo-gift::after {
+      content: ''; position: absolute;
+      width: 1px; height: 18px;
+      background: rgba(205,164,52,0.1);
+      top: -1px; left: 10px;
+    }
+    /* шарик */
+    .geo-balloon { width: 18px; height: 22px; border: 1px solid rgba(205,164,52,0.1); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: rgba(205,164,52,0.03); }
+    .geo-balloon::after {
+      content: ''; position: absolute;
+      width: 1px; height: 16px;
+      background: rgba(205,164,52,0.08);
+      bottom: -16px; left: 8px;
+    }
+    /* нота */
+    .geo-note { width: 0; height: 0; border: none; }
+    .geo-note::before {
+      content: ''; position: absolute;
+      width: 8px; height: 8px;
+      border: 1px solid rgba(205,164,52,0.12);
+      border-radius: 50%;
+      top: 12px; left: -4px;
+    }
+    .geo-note::after {
+      content: ''; position: absolute;
+      width: 1px; height: 16px;
+      background: rgba(205,164,52,0.1);
+      top: -4px; left: 4px;
+    }
+
+    @keyframes geo-drift { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(15deg); } }
+    @keyframes geo-drift2 { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-8px) rotate(10deg); } }
+    @keyframes geo-sway { 0%,100% { transform: translateX(0) rotate(0deg); } 50% { transform: translateX(8px) rotate(5deg); } }
+    .geo.d1 { animation: geo-drift 9s ease-in-out infinite; }
+    .geo.d2 { animation: geo-drift2 11s ease-in-out infinite 1s; }
+    .geo.d3 { animation: geo-drift 7s ease-in-out infinite 2s; }
+    .geo.sw1 { animation: geo-sway 10s ease-in-out infinite; }
+    .geo.sw2 { animation: geo-sway 8s ease-in-out infinite 1.5s; }
+
+    @media (max-width: 768px) { .geo-layer { display: none; } }
 
     /* === ANIMATIONS === */
     .reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.6s, transform 0.6s; }
@@ -440,17 +598,11 @@
 
   <!-- INTRO -->
   <div class="intro" id="intro">
-    <div class="intro-bg">
-      <div class="intro-orb intro-orb-1"></div>
-      <div class="intro-orb intro-orb-2"></div>
-      <div class="intro-orb intro-orb-3"></div>
-      <div class="intro-orb intro-orb-4"></div>
-    </div>
-    <div class="intro-sparks" id="introSparks"></div>
+    <canvas id="introCanvas"></canvas>
     <div class="intro-content">
       <div class="intro-logo"><img src="logo.png" alt="BooGagArt"></div>
       <div class="intro-line"></div>
-      <div class="intro-tagline">Праздники под ключ</div>
+      <div class="intro-tagline">Создаём историю, а не просто праздник</div>
     </div>
   </div>
 
@@ -462,13 +614,76 @@
         <a href="#about">О нас</a>
         <a href="#services">Услуги</a>
         <a href="#schedule">Процесс</a>
-        <a href="#gallery">Галерея</a>
         <a href="#reviews">Отзывы</a>
         <a href="#contact" class="nav-cta">Заявка</a>
       </nav>
       <button class="burger" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </header>
+
+  <!-- GEO DECORATIONS -->
+  <div class="geo-layer">
+    <!-- треугольники -->
+    <div class="geo geo-tri f1" style="top:8%;left:5%"></div>
+    <div class="geo geo-tri f2" style="top:22%;right:8%"></div>
+    <div class="geo geo-tri f3" style="top:45%;left:3%"></div>
+    <div class="geo geo-tri f4" style="top:65%;right:4%"></div>
+    <div class="geo geo-tri f1" style="top:80%;left:7%"></div>
+    <div class="geo geo-tri f2" style="top:35%;right:2%;transform:rotate(180deg)"></div>
+    <div class="geo geo-tri f3" style="top:55%;left:92%;transform:rotate(90deg)"></div>
+    <div class="geo geo-tri f4" style="top:12%;left:88%"></div>
+    <!-- ромбы -->
+    <div class="geo geo-diamond fr1" style="top:15%;left:12%"></div>
+    <div class="geo geo-diamond fr2" style="top:42%;right:10%"></div>
+    <div class="geo geo-diamond fr1" style="top:70%;left:9%"></div>
+    <div class="geo geo-diamond fr2" style="top:88%;right:12%"></div>
+    <div class="geo geo-diamond fr1" style="top:58%;left:94%"></div>
+    <!-- кольца -->
+    <div class="geo geo-ring sp1" style="top:18%;right:15%"></div>
+    <div class="geo geo-ring sp2" style="top:50%;left:6%;width:60px;height:60px"></div>
+    <div class="geo geo-ring p1" style="top:75%;right:6%;width:100px;height:100px"></div>
+    <div class="geo geo-ring p2" style="top:30%;left:90%;width:50px;height:50px"></div>
+    <div class="geo geo-ring sp1" style="top:90%;left:15%;width:70px;height:70px"></div>
+    <!-- горизонтальные линии -->
+    <div class="geo geo-line" style="top:20%;left:0;width:100%"></div>
+    <div class="geo geo-line" style="top:40%;left:0;width:100%"></div>
+    <div class="geo geo-line" style="top:60%;left:0;width:100%"></div>
+    <div class="geo geo-line" style="top:80%;left:0;width:100%"></div>
+    <!-- вертикальные линии -->
+    <div class="geo geo-vline" style="left:10%;top:0;height:100%"></div>
+    <div class="geo geo-vline" style="left:90%;top:0;height:100%"></div>
+    <!-- звёзды -->
+    <div class="geo geo-star d1" style="top:10%;left:15%"></div>
+    <div class="geo geo-star d2" style="top:48%;right:12%"></div>
+    <div class="geo geo-star d3" style="top:72%;left:6%"></div>
+    <div class="geo geo-star d1" style="top:25%;right:5%"></div>
+    <!-- бокалы -->
+    <div class="geo geo-glass sw1" style="top:32%;left:4%"></div>
+    <div class="geo geo-glass sw2" style="top:68%;right:7%"></div>
+    <!-- короны -->
+    <div class="geo geo-crown d2" style="top:14%;right:18%"></div>
+    <div class="geo geo-crown d1" style="top:56%;left:2%"></div>
+    <div class="geo geo-crown d3" style="top:85%;right:3%"></div>
+    <!-- подарки -->
+    <div class="geo geo-gift d3" style="top:38%;left:8%"></div>
+    <div class="geo geo-gift d1" style="top:62%;right:5%"></div>
+    <div class="geo geo-gift d2" style="top:92%;left:13%"></div>
+    <!-- шарики -->
+    <div class="geo geo-balloon sw1" style="top:20%;left:93%"></div>
+    <div class="geo geo-balloon sw2" style="top:44%;left:2%"></div>
+    <div class="geo geo-balloon d1" style="top:78%;right:14%"></div>
+    <!-- ноты -->
+    <div class="geo geo-note d2" style="top:28%;right:3%"></div>
+    <div class="geo geo-note d3" style="top:52%;left:5%"></div>
+    <div class="geo geo-note sw1" style="top:83%;left:92%"></div>
+    <!-- конфетти -->
+    <div class="geo geo-confetti d1" style="top:5%;left:20%;transform:rotate(25deg)"></div>
+    <div class="geo geo-confetti c2 d2" style="top:16%;right:22%;transform:rotate(-15deg)"></div>
+    <div class="geo geo-confetti d3" style="top:36%;left:95%;transform:rotate(40deg)"></div>
+    <div class="geo geo-confetti c2 sw1" style="top:54%;right:2%;transform:rotate(-30deg)"></div>
+    <div class="geo geo-confetti d1" style="top:74%;left:11%;transform:rotate(55deg)"></div>
+    <div class="geo geo-confetti c2 d2" style="top:88%;right:16%;transform:rotate(-45deg)"></div>
+  </div>
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -482,22 +697,16 @@
             <a href="#contact" class="btn btn-primary">Оставить заявку</a>
             <a href="#services" class="btn btn-outline">Подробнее</a>
           </div>
-          <div class="countdown" id="countdown">
-            <div class="cd-item"><div class="cd-num" id="cd-d">00</div><div class="cd-label">дней</div></div>
-            <div class="cd-item"><div class="cd-num" id="cd-h">00</div><div class="cd-label">часов</div></div>
-            <div class="cd-item"><div class="cd-num" id="cd-m">00</div><div class="cd-label">минут</div></div>
-            <div class="cd-item"><div class="cd-num" id="cd-s">00</div><div class="cd-label">секунд</div></div>
-          </div>
         </div>
         <div class="hero-right">
-          <div class="hero-image reveal">&#127881;</div>
+          <div class="hero-image reveal"><img src="team.png" alt="Команда BooGagArt"></div>
           <div class="hero-float-card">
-            <div class="hfc-icon hfc-icon-orange">&#127874;</div>
-            <div class="hfc-text"><strong>36+ мероприятий</strong><span>Проведено за год</span></div>
+            <div class="hfc-icon hfc-icon-orange"><svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9"/></svg></div>
+            <div class="hfc-text"><strong>2,5К+ мероприятий</strong><span>Проведено за всё время</span></div>
           </div>
           <div class="hero-float-card">
-            <div class="hfc-icon hfc-icon-green">&#11088;</div>
-            <div class="hfc-text"><strong>100% отдача</strong><span>Довольные клиенты</span></div>
+            <div class="hfc-icon hfc-icon-green"><svg viewBox="0 0 24 24"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+            <div class="hfc-text"><strong>97% возврат</strong><span>Клиенты возвращаются</span></div>
           </div>
         </div>
       </div>
@@ -509,7 +718,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-video reveal">
-          <div class="about-video-play">&#9654;</div>
+          <div class="about-video-play"><svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:#0D1117;stroke:none;margin-left:3px"><polygon points="6,3 20,12 6,21"/></svg></div>
         </div>
         <div class="about-text reveal">
           <div class="section-tag">О нас</div>
@@ -521,9 +730,9 @@
             <a href="#services" class="btn btn-outline">Наши услуги</a>
           </div>
           <div class="about-stats stagger">
-            <div class="about-stat reveal"><div class="about-stat-num" data-target="36">0</div><div class="about-stat-label">Мероприятий</div></div>
-            <div class="about-stat reveal"><div class="about-stat-num" data-target="250">0</div><div class="about-stat-label">Клиентов</div></div>
-            <div class="about-stat reveal"><div class="about-stat-num" data-target="100" data-suffix="%">0</div><div class="about-stat-label">Отдача</div></div>
+            <div class="about-stat reveal"><div class="about-stat-num" data-target="2500">0</div><div class="about-stat-label">Мероприятий</div></div>
+            <div class="about-stat reveal"><div class="about-stat-num" data-target="530">0</div><div class="about-stat-label">Клиентов</div></div>
+            <div class="about-stat reveal"><div class="about-stat-num" data-target="97" data-suffix="%">0</div><div class="about-stat-label">Возврат клиентов</div></div>
           </div>
         </div>
       </div>
@@ -535,12 +744,12 @@
     <div class="container">
       <div class="section-header"><div class="section-tag">Услуги</div><h2>Что мы <em>делаем</em></h2><p>Всё для идеального праздника — от идеи до реализации</p></div>
       <div class="services-grid stagger">
-        <div class="svc-card reveal"><span class="svc-icon">&#127874;</span><h3>Дни рождения</h3><p>Детские и взрослые праздники с уникальным сценарием, декором и развлечениями</p></div>
-        <div class="svc-card reveal"><span class="svc-icon">&#127876;</span><h3>Дед Мороз и Снегурочка</h3><p>Новогодние поздравления на дом, в офис или корпоратив. Волшебство гарантировано</p></div>
-        <div class="svc-card reveal"><span class="svc-icon">&#127917;</span><h3>Детские праздники</h3><p>Аниматоры, квесты, шоу-программы и мастер-классы для детей любого возраста</p></div>
-        <div class="svc-card reveal"><span class="svc-icon">&#127878;</span><h3>Корпоративы</h3><p>Тимбилдинг, тематические вечеринки, развлекательные программы для команд</p></div>
-        <div class="svc-card reveal"><span class="svc-icon">&#127926;</span><h3>Шоу-программы</h3><p>Ведущие, диджеи, фокусники, научные шоу и другие развлечения</p></div>
-        <div class="svc-card reveal"><span class="svc-icon">&#127880;</span><h3>Оформление</h3><p>Воздушные шары, декор, фотозоны — создадим атмосферу праздника</p></div>
+        <div class="svc-card reveal" data-svc="birthday"><span class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="14" width="20" height="8" rx="1"/><path d="M4 14v-2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/><path d="M12 6v4"/><path d="M9 4l3-2 3 2"/><circle cx="7" cy="10" r="0.5" fill="currentColor"/><circle cx="17" cy="10" r="0.5" fill="currentColor"/></svg></span><h3>Дни рождения</h3><p>Детские и взрослые праздники с уникальным сценарием, декором и развлечениями</p><div class="svc-hint"><svg viewBox="0 0 24 24" style="width:14px;height:14px;vertical-align:-2px;stroke:currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> Смотреть фото</div></div>
+        <div class="svc-card reveal" data-svc="newyear"><span class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2l-4 6h8l-4-6z"/><path d="M8 8l-4 6h16l-4-6"/><path d="M4 14l-2 6h20l-2-6"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="9" y1="23" x2="15" y2="23"/></svg></span><h3>Дед Мороз и Снегурочка</h3><p>Новогодние поздравления на дом, в офис или корпоратив. Волшебство гарантировано</p><div class="svc-hint"><svg viewBox="0 0 24 24" style="width:14px;height:14px;vertical-align:-2px;stroke:currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> Смотреть фото</div></div>
+        <div class="svc-card reveal" data-svc="kids"><span class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2L8 8h8L12 2z"/><rect x="9" y="8" width="6" height="8" rx="1"/><path d="M9 16l-2 6"/><path d="M15 16l2 6"/><circle cx="5" cy="5" r="1.5"/><circle cx="19" cy="5" r="1.5"/><path d="M6.5 5L9 8"/><path d="M17.5 5L15 8"/></svg></span><h3>Детские праздники</h3><p>Аниматоры, квесты, шоу-программы и мастер-классы для детей любого возраста</p><div class="svc-hint"><svg viewBox="0 0 24 24" style="width:14px;height:14px;vertical-align:-2px;stroke:currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> Смотреть фото</div></div>
+        <div class="svc-card reveal" data-svc="corporate"><span class="svc-icon"><svg viewBox="0 0 24 24"><path d="M8 22h8"/><path d="M12 14v8"/><path d="M5 2l2 10h2L7 2"/><path d="M19 2l-2 10h-2l2-10"/><path d="M9 12h6"/><ellipse cx="7" cy="2" rx="2" ry="1"/><ellipse cx="17" cy="2" rx="2" ry="1"/></svg></span><h3>Корпоративы</h3><p>Тимбилдинг, тематические вечеринки, развлекательные программы для команд</p><div class="svc-hint"><svg viewBox="0 0 24 24" style="width:14px;height:14px;vertical-align:-2px;stroke:currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> Смотреть фото</div></div>
+        <div class="svc-card reveal" data-svc="show"><span class="svc-icon"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span><h3>Шоу-программы</h3><p>Ведущие, диджеи, фокусники, научные шоу и другие развлечения</p><div class="svc-hint"><svg viewBox="0 0 24 24" style="width:14px;height:14px;vertical-align:-2px;stroke:currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> Смотреть фото</div></div>
+        <div class="svc-card reveal" data-svc="decor"><span class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 22c-4 0-8-2-8-6 0-3 2-5 4-7l4-5 4 5c2 2 4 4 4 7 0 4-4 6-8 6z"/><line x1="12" y1="14" x2="12" y2="22"/><path d="M8 18c0-2 2-3 4-3s4 1 4 3"/></svg></span><h3>Оформление</h3><p>Воздушные шары, декор, фотозоны — создадим атмосферу праздника</p><div class="svc-hint"><svg viewBox="0 0 24 24" style="width:14px;height:14px;vertical-align:-2px;stroke:currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> Смотреть фото</div></div>
       </div>
     </div>
   </section>
@@ -555,22 +764,6 @@
         <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-content"><div class="tl-step">Шаг 03</div><h3>Готовим праздник</h3><p>Берём всю организацию и подготовку на себя — вам не нужно ни о чём беспокоиться</p></div></div>
         <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-content"><div class="tl-step">Шаг 04</div><h3>Вы наслаждаетесь</h3><p>Приходите и получайте удовольствие. Всё остальное — на нас</p></div></div>
       </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="gallery" id="gallery">
-    <div class="container">
-      <div class="section-header"><div class="section-tag">Галерея</div><h2>Наши <em>работы</em></h2><p>Моменты радости, которые мы создаём</p></div>
-      <div class="gallery-grid stagger">
-        <div class="g-item reveal"><div class="g-ph">&#127874;<span>День рождения</span></div><div class="g-overlay">&#128248; Смотреть</div></div>
-        <div class="g-item reveal"><div class="g-ph">&#127876;<span>Новый год</span></div><div class="g-overlay">&#128248; Смотреть</div></div>
-        <div class="g-item reveal"><div class="g-ph">&#127880;<span>Оформление</span></div><div class="g-overlay">&#128248; Смотреть</div></div>
-        <div class="g-item reveal"><div class="g-ph">&#127917;<span>Детский</span></div><div class="g-overlay">&#128248; Смотреть</div></div>
-        <div class="g-item reveal"><div class="g-ph">&#127878;<span>Корпоратив</span></div><div class="g-overlay">&#128248; Смотреть</div></div>
-        <div class="g-item reveal"><div class="g-ph">&#127926;<span>Шоу</span></div><div class="g-overlay">&#128248; Смотреть</div></div>
-      </div>
-      <div class="gallery-more"><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener" class="btn btn-outline">&#128247; Больше в Instagram</a></div>
     </div>
   </section>
 
@@ -592,10 +785,10 @@
     <div class="container">
       <div class="section-header"><div class="section-tag">Преимущества</div><h2>Почему выбирают <em>нас</em></h2><p>Мы не просто организуем праздники — мы создаём эмоции</p></div>
       <div class="features-grid stagger">
-        <div class="feat-card reveal"><div class="feat-icon">&#128161;</div><h3>Креативный подход</h3><p>Нестандартные идеи и свежие решения для каждого</p></div>
-        <div class="feat-card reveal"><div class="feat-icon">&#128276;</div><h3>Всё под ключ</h3><p>От сценария до уборки — вам остаётся наслаждаться</p></div>
-        <div class="feat-card reveal"><div class="feat-icon">&#128150;</div><h3>Душевная команда</h3><p>Мы любим то, что делаем. Это чувствуется в деталях</p></div>
-        <div class="feat-card reveal"><div class="feat-icon">&#128205;</div><h3>Весь Алматы</h3><p>Работаем по городу и выезжаем за пределы</p></div>
+        <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 4 12.7V17H8v-2.3A7 7 0 0 1 12 2z"/></svg></div><h3>Креативный подход</h3><p>Нестандартные идеи и свежие решения для каждого</p></div>
+        <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg></div><h3>Всё под ключ</h3><p>От сценария до уборки — вам остаётся наслаждаться</p></div>
+        <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Душевная команда</h3><p>Мы любим то, что делаем. Это чувствуется в деталях</p></div>
+        <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Весь Алматы</h3><p>Работаем по городу и выезжаем за пределы</p></div>
       </div>
     </div>
   </section>
@@ -609,20 +802,20 @@
           <h2>Let's <em>talk</em></h2>
           <p>Ответьте на 5 быстрых вопросов — и мы подготовим предложение. Меньше минуты!</p>
           <div class="brief-contacts">
-            <div class="bc-item"><div class="bc-icon">&#128205;</div><div><strong>Алматы, Казахстан</strong><span>Выезжаем по всему городу</span></div></div>
-            <div class="bc-item"><div class="bc-icon">&#128172;</div><div><strong>WhatsApp</strong><span>Номер скоро</span></div></div>
-            <div class="bc-item"><div class="bc-icon">&#128247;</div><div><strong>Instagram</strong><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener">@boogagart</a></div></div>
-            <div class="bc-item"><div class="bc-icon">&#128336;</div><div><strong>Ежедневно</strong><span>9:00 — 21:00</span></div></div>
+            <div class="bc-item"><div class="bc-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><strong>ул. Брусиловского 134А/1</strong><span>Алматы, Казахстан</span></div></div>
+            <div class="bc-item"><div class="bc-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><div><strong>WhatsApp</strong><a href="https://wa.me/77073252703" target="_blank" rel="noopener">+7 707 325 27 03</a></div></div>
+            <div class="bc-item"><div class="bc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div><div><strong>Instagram</strong><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener">@boogagart</a></div></div>
+            <div class="bc-item"><div class="bc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><strong>Ежедневно</strong><span>9:00 — 21:00</span></div></div>
           </div>
         </div>
         <div class="brief-card reveal" id="briefCard">
           <div class="bp" id="bp"><div class="bp-dot active"></div><div class="bp-dot"></div><div class="bp-dot"></div><div class="bp-dot"></div><div class="bp-dot"></div></div>
-          <div class="bs active" data-step="1"><div class="bs-label">Шаг 1 из 5</div><h3>Какой праздник планируете?</h3><div class="bo-grid" data-name="eventType"><div class="bo" data-value="birthday"><span class="bo-e">&#127874;</span>День рождения</div><div class="bo" data-value="kids"><span class="bo-e">&#127917;</span>Детский праздник</div><div class="bo" data-value="newyear"><span class="bo-e">&#127876;</span>Новый год</div><div class="bo" data-value="corporate"><span class="bo-e">&#127878;</span>Корпоратив</div><div class="bo" data-value="wedding"><span class="bo-e">&#128141;</span>Свадьба</div><div class="bo" data-value="other"><span class="bo-e">&#9889;</span>Другое</div></div></div>
-          <div class="bs" data-step="2"><div class="bs-label">Шаг 2 из 5</div><h3>Сколько гостей?</h3><div class="bo-grid" data-name="guests"><div class="bo" data-value="5-10"><span class="bo-e">&#128101;</span>5 — 10</div><div class="bo" data-value="10-25"><span class="bo-e">&#128101;</span>10 — 25</div><div class="bo" data-value="25-50"><span class="bo-e">&#128101;</span>25 — 50</div><div class="bo" data-value="50+"><span class="bo-e">&#127881;</span>50+</div></div></div>
-          <div class="bs" data-step="3"><div class="bs-label">Шаг 3 из 5</div><h3>Примерный бюджет?</h3><div class="bo-grid" data-name="budget"><div class="bo" data-value="до 100К"><span class="bo-e">&#128176;</span>до 100 000 &#8376;</div><div class="bo" data-value="100-300К"><span class="bo-e">&#128176;</span>100-300 тыс &#8376;</div><div class="bo" data-value="300-500К"><span class="bo-e">&#128176;</span>300-500 тыс &#8376;</div><div class="bo" data-value="обсудим"><span class="bo-e">&#128172;</span>Обсудим</div></div></div>
+          <div class="bs active" data-step="1"><div class="bs-label">Шаг 1 из 5</div><h3>Какой праздник планируете?</h3><div class="bo-grid" data-name="eventType"><div class="bo" data-value="birthday"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><rect x="2" y="14" width="20" height="8" rx="1"/><path d="M4 14v-2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/><path d="M12 6v4"/><path d="M9 4l3-2 3 2"/></svg></span>День рождения</div><div class="bo" data-value="kids"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M12 2L8 8h8L12 2z"/><rect x="9" y="8" width="6" height="8" rx="1"/><path d="M9 16l-2 6"/><path d="M15 16l2 6"/></svg></span>Детский праздник</div><div class="bo" data-value="newyear"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M12 2l-4 6h8l-4-6z"/><path d="M8 8l-4 6h16l-4-6"/><path d="M4 14l-2 6h20l-2-6"/><line x1="12" y1="20" x2="12" y2="23"/></svg></span>Новый год</div><div class="bo" data-value="corporate"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M8 22h8"/><path d="M12 14v8"/><path d="M5 2l2 10h2L7 2"/><path d="M19 2l-2 10h-2l2-10"/><path d="M9 12h6"/></svg></span>Корпоратив</div><div class="bo" data-value="wedding"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></span>Свадьба</div><div class="bo" data-value="other"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>Другое</div></div></div>
+          <div class="bs" data-step="2"><div class="bs-label">Шаг 2 из 5</div><h3>Сколько гостей?</h3><div class="bo-grid" data-name="guests"><div class="bo" data-value="5-10"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>5 — 10</div><div class="bo" data-value="10-25"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>10 — 25</div><div class="bo" data-value="25-50"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>25 — 50</div><div class="bo" data-value="50+"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span>50+</div></div></div>
+          <div class="bs" data-step="3"><div class="bs-label">Шаг 3 из 5</div><h3>Примерный бюджет?</h3><div class="bo-grid" data-name="budget"><div class="bo" data-value="до 100К"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>до 100 000 &#8376;</div><div class="bo" data-value="100-300К"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>100-300 тыс &#8376;</div><div class="bo" data-value="300-500К"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>300-500 тыс &#8376;</div><div class="bo" data-value="обсудим"><span class="bo-e"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>Обсудим</div></div></div>
           <div class="bs" data-step="4"><div class="bs-label">Шаг 4 из 5</div><h3>Когда планируете?</h3><div class="bi"><input type="date" id="bDate" min=""></div><div style="margin-top:0.7rem"><div class="bo-grid" data-name="dateAlt" style="grid-template-columns:1fr 1fr"><div class="bo" data-value="ближайший месяц">Ближайший месяц</div><div class="bo" data-value="пока не знаю">Пока не знаю</div></div></div></div>
           <div class="bs" data-step="5"><div class="bs-label">Шаг 5 из 5</div><h3>Как с вами связаться?</h3><div class="bi-row"><div class="bi"><input type="text" id="bName" placeholder="Ваше имя" required></div><div class="bi"><input type="tel" id="bPhone" placeholder="+7 (___) ___-__-__" required></div></div><div class="bi"><textarea id="bComment" placeholder="Пожелания, детали... (необязательно)"></textarea></div></div>
-          <div class="bd" id="bDone"><div class="bd-icon">&#127881;</div><h3>Отлично, спасибо!</h3><p>Мы получили ваш бриф и свяжемся в течение часа.</p><div class="bd-summary" id="bSum"></div></div>
+          <div class="bd" id="bDone"><div class="bd-icon"><svg viewBox="0 0 24 24" style="width:56px;height:56px;stroke:var(--accent);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Отлично, спасибо!</h3><p>Мы получили ваш бриф и свяжемся в течение часа.</p><div class="bd-summary" id="bSum"></div></div>
           <div class="bn" id="bNav"><button class="bn-back hidden" id="bBack">&#8592; Назад</button><button class="bn-next" id="bNext" disabled>Далее &#8594;</button></div>
         </div>
       </div>
@@ -634,52 +827,169 @@
     <div class="container">
       <h2>Готовы к празднику?</h2>
       <p>Напишите нам — обсудим идею и сделаем её реальностью</p>
-      <div class="cta-btns"><a href="#" class="btn btn-wa" id="wa-btn">&#128172; WhatsApp</a><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener" class="btn btn-outline">&#128247; Instagram</a></div>
+      <div class="cta-btns"><a href="https://wa.me/77073252703" target="_blank" rel="noopener" class="btn btn-wa" id="wa-btn"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#fff;stroke-width:1.5;fill:none;vertical-align:-3px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp</a><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener" class="btn btn-outline"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none;vertical-align:-3px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Instagram</a></div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-top"><div class="footer-top-inner"><span>&#128222; Скоро</span><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener">&#128247; @boogagart</a><span>&#128205; Алматы, Казахстан</span></div></div>
+    <div class="footer-top"><div class="footer-top-inner"><span><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none;vertical-align:-2px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +7 707 325 27 03</span><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none;vertical-align:-2px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> @boogagart</a><span><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none;vertical-align:-2px"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ул. Брусиловского 134А/1, Алматы</span></div></div>
     <div class="footer-main">
-      <div class="footer-brand"><a href="#hero" class="logo"><img src="logo.png" alt="BooGagArt"></a><p>Организация праздников под ключ в Алматы. Нестандартные идеи, яркие эмоции.</p><div class="social-links"><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener" class="social-link" title="Instagram">&#128247;</a></div></div>
-      <div><h4>Навигация</h4><div class="f-links"><a href="#about">О нас</a><a href="#services">Услуги</a><a href="#schedule">Процесс</a><a href="#gallery">Галерея</a><a href="#reviews">Отзывы</a><a href="#contact">Контакты</a></div></div>
-      <div><h4>Контакты</h4><div class="f-contacts"><span>&#128205; Алматы, Казахстан</span><span>&#128172; WhatsApp — скоро</span><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener">&#128247; @boogagart</a></div></div>
+      <div class="footer-brand"><a href="#hero" class="logo"><img src="logo.png" alt="BooGagArt"></a><p>Организация праздников под ключ в Алматы. Нестандартные идеи, яркие эмоции.</p><div class="social-links"><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener" class="social-link" title="Instagram"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a></div></div>
+      <div><h4>Навигация</h4><div class="f-links"><a href="#about">О нас</a><a href="#services">Услуги</a><a href="#schedule">Процесс</a><a href="#reviews">Отзывы</a><a href="#contact">Контакты</a></div></div>
+      <div><h4>Контакты</h4><div class="f-contacts"><span><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;stroke-width:1.5;fill:none;vertical-align:-2px"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ул. Брусиловского 134А/1, Алматы</span><span><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;stroke-width:1.5;fill:none;vertical-align:-2px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> <a href="https://wa.me/77073252703" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none">+7 707 325 27 03</a></span><a href="https://www.instagram.com/boogagart/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;stroke-width:1.5;fill:none;vertical-align:-2px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> @boogagart</a></div></div>
     </div>
     <div class="footer-bottom">&copy; 2024-2026 BooGagArt. Все права защищены.</div>
   </footer>
 
-  <a href="#" class="wa-float" id="wa-float" title="WhatsApp">&#128172;</a>
+  <a href="https://wa.me/77073252703" target="_blank" rel="noopener" class="wa-float" id="wa-float" title="WhatsApp"><svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#fff;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+
+  <!-- SERVICE MODAL -->
+  <div class="svc-modal" id="svcModal">
+    <div class="svc-modal-inner">
+      <button class="svc-modal-close" id="svcClose">&times;</button>
+      <div class="svc-modal-title" id="svcTitle"></div>
+      <div class="svc-modal-slider" id="svcSlider">
+        <button class="svc-modal-arr prev" id="svcPrev">&#8249;</button>
+        <button class="svc-modal-arr next" id="svcNext">&#8250;</button>
+      </div>
+      <div class="svc-modal-dots" id="svcDots"></div>
+    </div>
+  </div>
 
   <script>
-    // === INTRO ===
+    // === INTRO (geometric canvas) ===
     (function(){
-      const intro=document.getElementById('intro'), sparks=document.getElementById('introSparks');
-      const colors=['#FF6B35','#FF3366','#00C9A7','#6366F1','#FFFFFF','#F59E0B'];
-      for(let i=0;i<40;i++){
-        const s=document.createElement('div');
-        s.className='intro-spark';
-        s.style.left=50+(Math.random()-0.5)*30+'%';
-        s.style.top=50+(Math.random()-0.5)*30+'%';
-        const a=Math.random()*Math.PI*2,d=400+Math.random()*900;
-        s.style.setProperty('--tx',Math.cos(a)*d+'px');
-        s.style.setProperty('--ty',Math.sin(a)*d+'px');
-        const size=40+Math.random()*100;
-        s.style.width=size+'px'; s.style.height=size+'px';
-        s.style.background=colors[Math.floor(Math.random()*colors.length)];
-        s.style.boxShadow='0 0 '+(size*3)+'px '+(size)+'px '+s.style.background;
-        s.style.animation='spark-fly '+(2.8+Math.random()*2.8)+'s cubic-bezier(0.16,1,0.3,1) '+(2.2+Math.random()*0.8)+'s forwards';
-        sparks.appendChild(s);
-      }
-      setTimeout(()=>{intro.classList.add('exit');document.body.classList.remove('loading');setTimeout(()=>intro.remove(),1700);},7700);
-    })();
+      const intro=document.getElementById('intro');
+      const c=document.getElementById('introCanvas'),ctx=c.getContext('2d');
+      let W,H,pts=[],shapes=[],t=0,raf;
 
-    // === Countdown ===
-    (function(){
-      function next(){const n=new Date(),d=new Date(n);d.setDate(d.getDate()+((6-d.getDay()+7)%7||7));d.setHours(18,0,0,0);if(d<=n)d.setDate(d.getDate()+7);return d;}
-      const t=next();
-      function u(){const s=Math.max(0,(t-new Date())/1000);document.getElementById('cd-d').textContent=String(Math.floor(s/86400)).padStart(2,'0');document.getElementById('cd-h').textContent=String(Math.floor(s%86400/3600)).padStart(2,'0');document.getElementById('cd-m').textContent=String(Math.floor(s%3600/60)).padStart(2,'0');document.getElementById('cd-s').textContent=String(Math.floor(s%60)).padStart(2,'0');}
-      u();setInterval(u,1000);
+      function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+      resize(); window.addEventListener('resize',resize);
+
+      // floating dots
+      for(let i=0;i<60;i++) pts.push({
+        x:Math.random()*2000-500, y:Math.random()*1400-200,
+        vx:(Math.random()-0.5)*0.4, vy:(Math.random()-0.5)*0.4,
+        r:1+Math.random()*2, a:Math.random()*0.5+0.2
+      });
+
+      // geometric shapes
+      const cx=()=>W/2, cy=()=>H/2;
+      shapes=[
+        // центральные треугольники
+        {type:'tri', x:()=>cx(), y:()=>cy(), s:180, rot:0, spd:0.003, a:0, fadeIn:0.3},
+        {type:'tri', x:()=>cx(), y:()=>cy(), s:260, rot:Math.PI, spd:-0.002, a:0, fadeIn:0.6},
+        // кольцо
+        {type:'ring', x:()=>cx(), y:()=>cy(), s:340, rot:0, spd:0.001, a:0, fadeIn:0.2},
+        // гексагоны
+        {type:'hex', x:()=>cx()-W*0.3, y:()=>cy()-H*0.2, s:60, rot:0, spd:0.005, a:0, fadeIn:0.8},
+        {type:'hex', x:()=>cx()+W*0.32, y:()=>cy()+H*0.18, s:50, rot:0.3, spd:-0.004, a:0, fadeIn:1.0},
+        // треугольники (много)
+        {type:'tri', x:()=>cx()-W*0.25, y:()=>cy()+H*0.25, s:45, rot:0, spd:0.006, a:0, fadeIn:0.9},
+        {type:'tri', x:()=>cx()+W*0.28, y:()=>cy()-H*0.28, s:55, rot:Math.PI, spd:-0.005, a:0, fadeIn:0.7},
+        {type:'tri', x:()=>cx()+W*0.15, y:()=>cy()-H*0.1, s:30, rot:0.3, spd:0.008, a:0, fadeIn:1.2},
+        {type:'tri', x:()=>cx()-W*0.18, y:()=>cy()+H*0.12, s:25, rot:0.8, spd:-0.007, a:0, fadeIn:1.1},
+        {type:'tri', x:()=>cx()-W*0.4, y:()=>cy()+H*0.05, s:35, rot:1.2, spd:0.004, a:0, fadeIn:1.3},
+        {type:'tri', x:()=>cx()+W*0.38, y:()=>cy()-H*0.05, s:40, rot:2.0, spd:-0.003, a:0, fadeIn:0.5},
+        {type:'tri', x:()=>cx(), y:()=>cy()-H*0.35, s:28, rot:0, spd:0.009, a:0, fadeIn:1.4},
+        {type:'tri', x:()=>cx(), y:()=>cy()+H*0.33, s:32, rot:Math.PI, spd:-0.006, a:0, fadeIn:1.0},
+        // горизонтальные полосы
+        {type:'line', x:()=>0, y:()=>cy()-H*0.35, len:()=>W, rot:0, spd:0, a:0, fadeIn:0.4},
+        {type:'line', x:()=>0, y:()=>cy()-H*0.15, len:()=>W, rot:0, spd:0, a:0, fadeIn:0.7},
+        {type:'line', x:()=>0, y:()=>cy()+H*0.15, len:()=>W, rot:0, spd:0, a:0, fadeIn:0.9},
+        {type:'line', x:()=>0, y:()=>cy()+H*0.35, len:()=>W, rot:0, spd:0, a:0, fadeIn:1.1},
+        // диагональные полосы
+        {type:'diagline', x:()=>cx()-W*0.4, y:()=>cy()-H*0.4, x2:()=>cx()-W*0.1, y2:()=>cy()+H*0.4, a:0, fadeIn:0.5},
+        {type:'diagline', x:()=>cx()+W*0.1, y:()=>cy()-H*0.4, x2:()=>cx()+W*0.4, y2:()=>cy()+H*0.4, a:0, fadeIn:0.8},
+        {type:'diagline', x:()=>cx()-W*0.15, y:()=>cy()-H*0.45, x2:()=>cx()+W*0.15, y2:()=>cy()+H*0.45, a:0, fadeIn:0.3},
+        {type:'diagline', x:()=>cx()+W*0.2, y:()=>cy()-H*0.3, x2:()=>cx()-W*0.2, y2:()=>cy()+H*0.3, a:0, fadeIn:0.6},
+      ];
+
+      function drawShape(sh){
+        ctx.save();
+        ctx.globalAlpha=sh.a; ctx.strokeStyle='#CDA434'; ctx.lineWidth=1;
+        if(sh.type==='line'){
+          ctx.lineWidth=0.5;
+          ctx.beginPath(); ctx.moveTo(sh.x(),sh.y()); ctx.lineTo(sh.x()+sh.len(),sh.y()); ctx.stroke();
+          ctx.restore(); return;
+        }
+        if(sh.type==='diagline'){
+          ctx.lineWidth=0.5;
+          ctx.beginPath(); ctx.moveTo(sh.x(),sh.y()); ctx.lineTo(sh.x2(),sh.y2()); ctx.stroke();
+          ctx.restore(); return;
+        }
+        const px=sh.x(), py=sh.y();
+        ctx.translate(px,py); ctx.rotate(sh.rot);
+        const s=sh.s;
+        if(sh.type==='diamond'){
+          ctx.beginPath(); ctx.moveTo(0,-s); ctx.lineTo(s,0); ctx.lineTo(0,s); ctx.lineTo(-s,0); ctx.closePath(); ctx.stroke();
+        } else if(sh.type==='hex'){
+          ctx.beginPath();
+          for(let i=0;i<6;i++){const a=Math.PI/3*i-Math.PI/6; ctx.lineTo(Math.cos(a)*s,Math.sin(a)*s);}
+          ctx.closePath(); ctx.stroke();
+        } else if(sh.type==='tri'){
+          ctx.beginPath();
+          for(let i=0;i<3;i++){const a=Math.PI*2/3*i-Math.PI/2; ctx.lineTo(Math.cos(a)*s,Math.sin(a)*s);}
+          ctx.closePath(); ctx.stroke();
+        } else if(sh.type==='ring'){
+          ctx.beginPath(); ctx.arc(0,0,s,0,Math.PI*2); ctx.stroke();
+          ctx.beginPath(); ctx.arc(0,0,s*0.85,0,Math.PI*2); ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      const start=performance.now();
+      function frame(now){
+        t=(now-start)/1000;
+        ctx.clearRect(0,0,W,H);
+
+        // dots
+        ctx.fillStyle='#CDA434';
+        for(const p of pts){
+          p.x+=p.vx; p.y+=p.vy;
+          if(p.x<-50)p.x=W+50; if(p.x>W+50)p.x=-50;
+          if(p.y<-50)p.y=H+50; if(p.y>H+50)p.y=-50;
+          const fade=Math.min(1,t/2);
+          ctx.globalAlpha=p.a*fade;
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+        }
+
+        // connections
+        ctx.strokeStyle='#CDA434'; ctx.lineWidth=0.5;
+        for(let i=0;i<pts.length;i++){
+          for(let j=i+1;j<pts.length;j++){
+            const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+            if(d<120){
+              ctx.globalAlpha=(1-d/120)*0.12*Math.min(1,t/2);
+              ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke();
+            }
+          }
+        }
+
+        // shapes
+        for(const sh of shapes){
+          sh.rot+=sh.spd;
+          sh.a=Math.min(0.35, Math.max(0,(t-sh.fadeIn)*0.25));
+          drawShape(sh);
+        }
+
+        // center glow
+        const g=ctx.createRadialGradient(cx(),cy(),0,cx(),cy(),300);
+        g.addColorStop(0,'rgba(205,164,52,0.06)'); g.addColorStop(1,'transparent');
+        ctx.globalAlpha=Math.min(1,t/1.5); ctx.fillStyle=g;
+        ctx.fillRect(0,0,W,H);
+
+        raf=requestAnimationFrame(frame);
+      }
+      raf=requestAnimationFrame(frame);
+
+      setTimeout(()=>{
+        cancelAnimationFrame(raf);
+        intro.classList.add('exit');
+        document.body.classList.remove('loading');
+        setTimeout(()=>intro.remove(),1400);
+      },3000);
     })();
 
     // === Reveal ===
@@ -698,6 +1008,77 @@
 
     // === Reviews ===
     const tr=document.getElementById('reviewsTrack');tr.innerHTML+=tr.innerHTML;
+
+    // === Service Modal ===
+    (function(){
+      const svcData={
+        birthday:{title:'Дни рождения',photos:[
+          {grad:'linear-gradient(135deg,#CDA434,#E2BE5A)',icon:'&#127874;',text:'Оформление зала'},
+          {grad:'linear-gradient(135deg,#FFD700,#FFE44D)',icon:'&#127856;',text:'Торт и сладкий стол'},
+          {grad:'linear-gradient(135deg,#CFB53B,#E2BE5A)',icon:'&#127881;',text:'Развлечения'},
+          {grad:'linear-gradient(135deg,#B8860B,#D4A843)',icon:'&#127908;',text:'Ведущий и музыка'}
+        ]},
+        newyear:{title:'Дед Мороз и Снегурочка',photos:[
+          {grad:'linear-gradient(135deg,#8B7327,#CDA434)',icon:'&#127876;',text:'Дед Мороз на дом'},
+          {grad:'linear-gradient(135deg,#DAA520,#E2BE5A)',icon:'&#127877;',text:'Снегурочка'},
+          {grad:'linear-gradient(135deg,#CDA434,#E2BE5A)',icon:'&#127873;',text:'Подарки и сюрпризы'},
+          {grad:'linear-gradient(135deg,#FFD700,#FFE44D)',icon:'&#10052;',text:'Новогоднее шоу'}
+        ]},
+        kids:{title:'Детские праздники',photos:[
+          {grad:'linear-gradient(135deg,#FFD700,#FFE44D)',icon:'&#129313;',text:'Аниматоры'},
+          {grad:'linear-gradient(135deg,#B8860B,#D4A843)',icon:'&#128270;',text:'Квесты'},
+          {grad:'linear-gradient(135deg,#DAA520,#E2BE5A)',icon:'&#127912;',text:'Мастер-классы'},
+          {grad:'linear-gradient(135deg,#CFB53B,#E2BE5A)',icon:'&#127880;',text:'Шоу-программы'}
+        ]},
+        corporate:{title:'Корпоративы',photos:[
+          {grad:'linear-gradient(135deg,#8B7327,#CDA434)',icon:'&#127942;',text:'Тимбилдинг'},
+          {grad:'linear-gradient(135deg,#CDA434,#E2BE5A)',icon:'&#127878;',text:'Вечеринки'},
+          {grad:'linear-gradient(135deg,#DAA520,#E2BE5A)',icon:'&#127908;',text:'Ведущий'},
+          {grad:'linear-gradient(135deg,#B8860B,#D4A843)',icon:'&#128247;',text:'Фотозона'}
+        ]},
+        show:{title:'Шоу-программы',photos:[
+          {grad:'linear-gradient(135deg,#CDA434,#E2BE5A)',icon:'&#127926;',text:'Музыка и диджеи'},
+          {grad:'linear-gradient(135deg,#B8860B,#D4A843)',icon:'&#127913;',text:'Фокусники'},
+          {grad:'linear-gradient(135deg,#DAA520,#E2BE5A)',icon:'&#128300;',text:'Научное шоу'},
+          {grad:'linear-gradient(135deg,#FFD700,#FFE44D)',icon:'&#128131;',text:'Танцевальные шоу'}
+        ]},
+        decor:{title:'Оформление',photos:[
+          {grad:'linear-gradient(135deg,#FFD700,#FFE44D)',icon:'&#127880;',text:'Воздушные шары'},
+          {grad:'linear-gradient(135deg,#CFB53B,#E2BE5A)',icon:'&#127774;',text:'Гирлянды и свет'},
+          {grad:'linear-gradient(135deg,#8B7327,#CDA434)',icon:'&#128247;',text:'Фотозоны'},
+          {grad:'linear-gradient(135deg,#DAA520,#E2BE5A)',icon:'&#127804;',text:'Тематический декор'}
+        ]}
+      };
+      const modal=document.getElementById('svcModal'),slider=document.getElementById('svcSlider'),title=document.getElementById('svcTitle'),dots=document.getElementById('svcDots');
+      let cur=0,slides=[];
+      function render(key){
+        const d=svcData[key];if(!d)return;
+        title.textContent=d.title;
+        slider.querySelectorAll('.svc-modal-slide').forEach(s=>s.remove());
+        dots.innerHTML='';
+        slides=d.photos.map((p,i)=>{
+          const sl=document.createElement('div');sl.className='svc-modal-slide'+(i===0?' active':'');
+          sl.innerHTML='<div class="svc-ph" style="background:'+p.grad+'">'+p.icon+'<span>'+p.text+'</span></div>';
+          slider.insertBefore(sl,document.getElementById('svcPrev'));
+          const dot=document.createElement('button');dot.className='svc-modal-dot'+(i===0?' active':'');
+          dot.addEventListener('click',()=>go(i));dots.appendChild(dot);
+          return sl;
+        });
+        cur=0;
+      }
+      function go(n){
+        slides[cur].classList.remove('active');dots.children[cur].classList.remove('active');
+        cur=(n+slides.length)%slides.length;
+        slides[cur].classList.add('active');dots.children[cur].classList.add('active');
+      }
+      document.getElementById('svcPrev').addEventListener('click',()=>go(cur-1));
+      document.getElementById('svcNext').addEventListener('click',()=>go(cur+1));
+      document.querySelectorAll('[data-svc]').forEach(c=>c.addEventListener('click',()=>{render(c.dataset.svc);modal.classList.add('open');document.body.style.overflow='hidden';}));
+      function close(){modal.classList.remove('open');document.body.style.overflow='';}
+      document.getElementById('svcClose').addEventListener('click',close);
+      modal.addEventListener('click',e=>{if(e.target===modal)close();});
+      document.addEventListener('keydown',e=>{if(!modal.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')go(cur-1);if(e.key==='ArrowRight')go(cur+1);});
+    })();
 
     // === Brief ===
     (function(){

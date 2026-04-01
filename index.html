@@ -360,6 +360,21 @@
     .pkg-btn-filled:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(205,164,52,0.3); }
     @media (max-width: 768px) { .packages-grid { grid-template-columns: 1fr; max-width: 400px; margin: 2rem auto 0; } }
 
+    /* === ADDONS === */
+    .addons-header { text-align: center; }
+    .addons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+    .addon-card { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 2rem; position: relative; overflow: hidden; transition: all 0.4s; }
+    .addon-card::before { display: none; }
+    .addon-card:hover { border-color: rgba(255,255,255,0.1); }
+    .addon-icon { margin-bottom: 0.8rem; opacity: 0.5; }
+    .addon-card h4 { font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; color: var(--text); }
+    .addon-card p { font-size: 0.82rem; line-height: 1.7; color: var(--text-light); margin-bottom: 0.8rem; opacity: 0.8; }
+    .addon-price { font-size: 0.9rem; font-weight: 500; color: var(--text-light); }
+    .addon-price span { font-size: 0.8rem; font-weight: 400; }
+    .addon-features { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
+    .addon-features span { font-size: 0.72rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); padding: 0.3rem 0.7rem; border-radius: 20px; color: var(--text-light); }
+    @media (max-width: 768px) { .addons-grid { grid-template-columns: 1fr; } }
+
     /* === SCHEDULE / PROCESS === */
     .schedule { background: var(--dark-2); }
     .timeline { position: relative; max-width: 800px; margin: 0 auto; }
@@ -876,6 +891,30 @@
           <a href="#contact" class="pkg-btn pkg-btn-outline">Оставить заявку</a>
         </div>
       </div>
+
+      <!-- ADDONS -->
+      <div class="addons-header reveal"><h3 style="font-family:'Jost',sans-serif;font-size:1rem;font-weight:400;margin-top:3rem;color:var(--text-light);letter-spacing:0.5px;text-transform:uppercase;opacity:0.6">Дополнительные услуги</h3></div>
+      <div class="addons-grid stagger">
+        <div class="addon-card reveal">
+          <div class="addon-icon"><svg viewBox="0 0 24 24" style="width:32px;height:32px;stroke:var(--primary);stroke-width:1.5;fill:none"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+          <h4>Кейтеринг</h4>
+          <p>Фуршеты, кофе-брейки, сладкие столы и полноценные банкеты от нашего партнёра <strong>Provkus Catering</strong>. Меню под любой формат — от лёгких закусок до изысканных блюд. Подключается к любому пакету.</p>
+          <div class="addon-price">от 5 000 ₸ <span>/ гость</span></div>
+        </div>
+        <div class="addon-card reveal">
+          <div class="addon-icon"><svg viewBox="0 0 24 24" style="width:32px;height:32px;stroke:var(--primary);stroke-width:1.5;fill:none"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <h4>Персонализация праздника</h4>
+          <p>Мы превращаем ваш праздник в историю о вас. Авторский квиз про именинника, песня написанная специально для вас, забавные факты о друзьях и коллегах, вплетённые в сценарий — каждый гость почувствует себя частью чего-то особенного.</p>
+          <div class="addon-features">
+            <span>&#127912; Квиз «Угадай кто»</span>
+            <span>&#127908; Персональная песня</span>
+            <span>&#128218; Факты и истории в сценарии</span>
+            <span>&#127910; Видеопоздравления от близких</span>
+          </div>
+          <div class="addon-price">от 50 000 ₸</div>
+        </div>
+      </div>
+
     </div>
   </section>
 

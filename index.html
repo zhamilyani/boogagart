@@ -1070,16 +1070,17 @@
           {grad:'linear-gradient(135deg,#CFB53B,#E2BE5A)',icon:'&#127880;',text:'Шоу-программы'}
         ]},
         corporate:{title:'Корпоративы',photos:[
-          {grad:'linear-gradient(135deg,#8B7327,#CDA434)',icon:'&#127942;',text:'Тимбилдинг'},
-          {grad:'linear-gradient(135deg,#CDA434,#E2BE5A)',icon:'&#127878;',text:'Вечеринки'},
-          {grad:'linear-gradient(135deg,#DAA520,#E2BE5A)',icon:'&#127908;',text:'Ведущий'},
-          {grad:'linear-gradient(135deg,#B8860B,#D4A843)',icon:'&#128247;',text:'Фотозона'}
+          {img:'photos/corporate/IMG_4445.JPG',text:'Ведущий мероприятия'},
+          {img:'photos/corporate/IMG_4450.JPG',text:'Награждение на сцене'},
+          {img:'photos/corporate/IMG_4455.JPG',text:'Тимбилдинг'},
+          {img:'photos/corporate/IMG_4456.JPG',text:'Костюмированное шоу'}
         ]},
         show:{title:'Шоу-программы',photos:[
-          {grad:'linear-gradient(135deg,#CDA434,#E2BE5A)',icon:'&#127926;',text:'Музыка и диджеи'},
-          {grad:'linear-gradient(135deg,#B8860B,#D4A843)',icon:'&#127913;',text:'Фокусники'},
-          {grad:'linear-gradient(135deg,#DAA520,#E2BE5A)',icon:'&#128300;',text:'Научное шоу'},
-          {grad:'linear-gradient(135deg,#FFD700,#FFE44D)',icon:'&#128131;',text:'Танцевальные шоу'}
+          {img:'photos/show/IMG_4448.JPG',text:'LED-шоу'},
+          {img:'photos/show/IMG_4449.JPG',text:'Шоу крыльев'},
+          {img:'photos/show/IMG_4452.JPG',text:'Огненное шоу'},
+          {img:'photos/show/IMG_4453.JPG',text:'Световое шоу'},
+          {img:'photos/show/IMG_4454.JPG',text:'Шоу с кольцами'}
         ]},
         decor:{title:'Оформление',photos:[
           {grad:'linear-gradient(135deg,#FFD700,#FFE44D)',icon:'&#127880;',text:'Воздушные шары'},
@@ -1097,7 +1098,7 @@
         dots.innerHTML='';
         slides=d.photos.map((p,i)=>{
           const sl=document.createElement('div');sl.className='svc-modal-slide'+(i===0?' active':'');
-          sl.innerHTML='<div class="svc-ph" style="background:'+p.grad+'">'+p.icon+'<span>'+p.text+'</span></div>';
+          sl.innerHTML=p.img?'<img src="'+p.img+'" alt="'+p.text+'">':'<div class="svc-ph" style="background:'+p.grad+'">'+p.icon+'<span>'+p.text+'</span></div>';
           slider.insertBefore(sl,document.getElementById('svcPrev'));
           const dot=document.createElement('button');dot.className='svc-modal-dot'+(i===0?' active':'');
           dot.addEventListener('click',()=>go(i));dots.appendChild(dot);

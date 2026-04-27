@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "npx serve -s . -l ${PORT:-3007}"
+  },
+  "dependencies": {
+    "canvas": "^3.2.3",
+    "pdfjs-dist": "^5.6.205"
   }
 }
